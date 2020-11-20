@@ -19,7 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="frmCliente.cpp" />
+    <ClCompile Include="frmEmpleado.cpp" />
     <ClCompile Include="frmLogin.cpp" />
+    <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmProducto.cpp" />
+    <ClCompile Include="frmProveedor.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -30,9 +35,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="ClienteDAO.h" />
+    <ClInclude Include="Conexion.h" />
+    <ClInclude Include="Constante.h" />
+    <ClInclude Include="frmCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEmpleado.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmLogin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmProveedor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Producto.h" />
+    <ClInclude Include="ProductoDAO.h" />
+    <ClInclude Include="Proveedor.h" />
+    <ClInclude Include="ProveedorDAO.h" />
+    <ClInclude Include="Usuario.h" />
+    <ClInclude Include="UsuarioDAO.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmCliente.resx">
+      <DependentUpon>frmCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProducto.resx">
+      <DependentUpon>frmProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedor.resx">
+      <DependentUpon>frmProveedor.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

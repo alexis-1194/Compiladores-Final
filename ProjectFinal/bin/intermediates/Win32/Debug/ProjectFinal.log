@@ -1,5 +1,8 @@
-﻿  frmLogin.cpp
-  Main.cpp
+﻿  frmCliente.cpp
+  frmEmpleado.cpp
+  frmLogin.cpp
+  frmProducto.cpp
+  frmProveedor.cpp
   Generando código...
-  frmLogin.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
+  frmCliente.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   ProjectFinal.vcxproj -> C:\Users\Usuario\Desktop\FinalCompiladores\ProjectFinal\\bin\Win32\Debug\ProjectFinal.exe

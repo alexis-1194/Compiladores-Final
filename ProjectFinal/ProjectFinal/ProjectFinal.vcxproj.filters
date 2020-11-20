@@ -5,15 +5,93 @@
     <ClCompile Include="frmLogin.cpp">
       <Filter>views</Filter>
     </ClCompile>
+    <ClCompile Include="frmPrincipal.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmCliente.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEmpleado.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmProveedor.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmProducto.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="views">
       <UniqueIdentifier>{6dbbc6ff-7a04-4fb5-ad64-e812e7509d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{2f51ad07-7b95-4d45-826e-50ff116a91d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DAO">
+      <UniqueIdentifier>{ec56021a-790e-4bac-aaca-31be96bac507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{7c062c69-ec8e-4ecb-95ea-c0ba0f14067a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{ff4fd42b-da24-49b5-adf9-4d3272821782}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmLogin.h">
       <Filter>views</Filter>
     </ClInclude>
+    <ClInclude Include="Conexion.h">
+      <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Constante.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Usuario.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="UsuarioDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="frmPrincipal.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="Cliente.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Proveedor.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ClienteDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="ProveedorDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="frmCliente.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEmpleado.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmProveedor.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmProducto.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="Producto.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductoDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmLogin.resx" />
+    <EmbeddedResource Include="frmPrincipal.resx" />
+    <EmbeddedResource Include="frmCliente.resx" />
+    <EmbeddedResource Include="frmEmpleado.resx" />
   </ItemGroup>
 </Project>
