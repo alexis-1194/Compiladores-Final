@@ -1,2 +1,2 @@
-#include "frmEmpleado.h"
+//#include "frmEmpleado.h"
 

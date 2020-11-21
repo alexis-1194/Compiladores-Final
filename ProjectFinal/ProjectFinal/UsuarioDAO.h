@@ -8,11 +8,11 @@ public:
 
 	list<Usuario> consultar();
 
-	void operator +=(Usuario obj);
+	void operator +=(Usuario obj);//INSERTAR
 
-	void operator *=(Usuario obj);
+	void operator *=(Usuario obj);//ACTUALIZAR
 
-	void operator -=(Usuario obj);
+	void operator -=(Usuario obj);//ELIMINAR
 
 	void usuarioProcesar(Usuario obj, int opcion);
 

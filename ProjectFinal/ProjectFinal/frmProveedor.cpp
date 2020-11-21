@@ -1,2 +1,2 @@
-#include "frmProveedor.h"
+//#include "frmProveedor.h"
 

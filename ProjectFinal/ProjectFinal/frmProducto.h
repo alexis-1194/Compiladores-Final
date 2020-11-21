@@ -50,7 +50,8 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::Button^  btnNuevo;
 	private: System::Windows::Forms::TextBox^  txtNombre;
 	private: System::Windows::Forms::TextBox^  txtPrecio_compra;
-	private: System::Windows::Forms::TextBox^  txtDNI;
+	private: System::Windows::Forms::TextBox^  txtCodigo;
+
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  lblCorreo;
 	private: System::Windows::Forms::Label^  lblCelular;
@@ -128,7 +129,7 @@ namespace ProjectFinal {
 			this->btnNuevo = (gcnew System::Windows::Forms::Button());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->txtPrecio_compra = (gcnew System::Windows::Forms::TextBox());
-			this->txtDNI = (gcnew System::Windows::Forms::TextBox());
+			this->txtCodigo = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->lblCorreo = (gcnew System::Windows::Forms::Label());
 			this->lblCelular = (gcnew System::Windows::Forms::Label());
@@ -237,6 +238,7 @@ namespace ProjectFinal {
 			this->btnGrabar->TabIndex = 141;
 			this->btnGrabar->Text = L"Grabar";
 			this->btnGrabar->UseVisualStyleBackColor = true;
+			this->btnGrabar->Click += gcnew System::EventHandler(this, &frmProducto::btnGrabar_Click);
 			// 
 			// btnEliminar
 			// 
@@ -249,6 +251,7 @@ namespace ProjectFinal {
 			this->btnEliminar->TabIndex = 140;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &frmProducto::btnEliminar_Click);
 			// 
 			// btnModificar
 			// 
@@ -261,6 +264,7 @@ namespace ProjectFinal {
 			this->btnModificar->TabIndex = 139;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
+			this->btnModificar->Click += gcnew System::EventHandler(this, &frmProducto::btnModificar_Click);
 			// 
 			// btnCancelar
 			// 
@@ -273,6 +277,7 @@ namespace ProjectFinal {
 			this->btnCancelar->TabIndex = 138;
 			this->btnCancelar->Text = L"Cancelar";
 			this->btnCancelar->UseVisualStyleBackColor = true;
+			this->btnCancelar->Click += gcnew System::EventHandler(this, &frmProducto::btnCancelar_Click);
 			// 
 			// btnNuevo
 			// 
@@ -284,6 +289,7 @@ namespace ProjectFinal {
 			this->btnNuevo->TabIndex = 137;
 			this->btnNuevo->Text = L"Nuevo";
 			this->btnNuevo->UseVisualStyleBackColor = true;
+			this->btnNuevo->Click += gcnew System::EventHandler(this, &frmProducto::btnNuevo_Click);
 			// 
 			// txtNombre
 			// 
@@ -303,14 +309,14 @@ namespace ProjectFinal {
 			this->txtPrecio_compra->Size = System::Drawing::Size(219, 20);
 			this->txtPrecio_compra->TabIndex = 135;
 			// 
-			// txtDNI
+			// txtCodigo
 			// 
-			this->txtDNI->Enabled = false;
-			this->txtDNI->Location = System::Drawing::Point(15, 41);
-			this->txtDNI->MaxLength = 8;
-			this->txtDNI->Name = L"txtDNI";
-			this->txtDNI->Size = System::Drawing::Size(219, 20);
-			this->txtDNI->TabIndex = 134;
+			this->txtCodigo->Enabled = false;
+			this->txtCodigo->Location = System::Drawing::Point(15, 41);
+			this->txtCodigo->MaxLength = 10;
+			this->txtCodigo->Name = L"txtCodigo";
+			this->txtCodigo->Size = System::Drawing::Size(219, 20);
+			this->txtCodigo->TabIndex = 134;
 			// 
 			// label5
 			// 
@@ -498,7 +504,7 @@ namespace ProjectFinal {
 			this->Controls->Add(this->btnNuevo);
 			this->Controls->Add(this->txtNombre);
 			this->Controls->Add(this->txtPrecio_compra);
-			this->Controls->Add(this->txtDNI);
+			this->Controls->Add(this->txtCodigo);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->lblCorreo);
 			this->Controls->Add(this->lblCelular);
@@ -513,5 +519,132 @@ namespace ProjectFinal {
 
 		}
 #pragma endregion
+	private: int opc;
+
+	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
+		opc = 1;
+		btnNuevo->Enabled = false;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = true;
+		btnCancelar->Enabled = true;
+
+		txtCodigo->Enabled = true;
+		txtPrecio_venta->Enabled = true;
+		txtPrecio_compra->Enabled = true; txtCantidad->Enabled = true;
+		txtNombre->Enabled = true; cboLinea->Enabled = true;
+		cboProveedor->Enabled = true;
+		txtPrecio_venta->Text = "";
+		txtPrecio_compra->Text = ""; txtCantidad->Text = ""; txtNombre->Text = "";
+		txtCodigo->Select();
+	}
+	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
+		opc = 0;
+		btnNuevo->Enabled = true;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = false;
+		btnCancelar->Enabled = false;
+
+		txtPrecio_venta->Enabled = false;
+		txtPrecio_compra->Enabled = false;
+		txtCantidad->Enabled = false;
+		txtNombre->Enabled = false;
+		cboLinea->Enabled = false;
+		cboProveedor->Enabled = false;
+
+		txtPrecio_venta->Text = "";
+		txtPrecio_compra->Text = ""; txtCantidad->Text = ""; txtNombre->Text = "", cboLinea->SelectedIndex = -1;
+		cboProveedor->SelectedIndex = -1;
+	}
+	private: System::Void btnModificar_Click(System::Object^  sender, System::EventArgs^  e) {
+		opc = 2;
+		btnNuevo->Enabled = false;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = true;
+		btnCancelar->Enabled = true;
+		/*txtCodigo->Enabled = false;*/
+		txtPrecio_venta->Enabled = true;
+		txtPrecio_compra->Enabled = true;
+		txtCantidad->Enabled = true;
+		txtNombre->Enabled = true;
+		cboLinea->Enabled = true;
+		cboProveedor->Enabled = true;
+		/*txtCodigo->Select();*/
+		txtNombre->Select();
+	}
+	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+	private: void subCadena(char * arr, int ini, int fin, char *x)
+	{
+		for (int i = ini + 1, j = 0; i < fin; i++, j++)
+		{
+			x[j] = arr[i];
+			x[j + 1] = 0;
+		}
+	}
+	private: void Codigo() {
+		char cod[11]; int n;
+		list<Producto> lista = dao.consultar();
+		for (Producto pro : lista) {
+			strcpy_s(cod, pro.getCodigo());
+		}
+		char codAux[11];
+		subCadena(cod, 0, 5, codAux);//00001
+		char completo[11];
+		strcpy_s(completo, '1' + codAux);//100001
+		n = Convert::ToInt32(completo);
+		n++;//incrementa en 1
+		if (n < 10)
+			/*Se asigna un formato al codigo */
+			txtCodigo->Text = gcnew String("PROD_0000" + n);
+		else if (n < 100)
+			txtCodigo->Text = gcnew String("PROD_000" + n);
+		else if (n < 1000)
+			txtCodigo->Text = gcnew String("PROD_00" + n);
+		else
+			MessageBox::Show("Supero el maximo de productos");
+	}
+
+	private: System::Void btnGrabar_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (txtCodigo->Text->Equals("")) {
+			MessageBox::Show("Complete campo Codigo");
+		}
+		else if (txtNombre->Text->Equals("")) {
+			MessageBox::Show("Complete campo nombre");
+		}
+		/*else if (cboLinea->SelectedIndex == -1) {
+			MessageBox::Show("Seleccione linea");
+		}*/
+		/*else if (txtPrecio_compra->Text->Equals("")) {
+			MessageBox::Show("Complete precio de compra");
+		}*/
+		else if (txtPrecio_venta->Text->Equals("")) {
+			MessageBox::Show("Complete precio de venta");
+		}
+		else if (txtCantidad->Text->Equals("")) {
+			MessageBox::Show("Complete campo cantidad");
+		}
+		/*else if (cboProveedor->SelectedIndex == -1) {
+			MessageBox::Show("Seleccione proveedor");
+		}*/
+		else {
+			Producto pro;
+			//dao = ProductoDAO();
+			pro.setCodigo(dao.StringToChar(txtCodigo->Text));
+			if (pro.validar()) {
+				pro.setDescripcion(dao.StringToChar(txtNombre->Text));
+				pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
+				pro.setPrecio(Convert::ToDouble(txtPrecio_venta->Text));
+				//dao.productoProcesar(pro, 1);
+				MessageBox::Show("Codigo valido");
+			}
+			else {
+				MessageBox::Show("Codigo no valido");
+			}
+		}
+	}
 	};
 }

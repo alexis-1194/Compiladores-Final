@@ -93,5 +93,7 @@
     <EmbeddedResource Include="frmPrincipal.resx" />
     <EmbeddedResource Include="frmCliente.resx" />
     <EmbeddedResource Include="frmEmpleado.resx" />
+    <EmbeddedResource Include="frmProducto.resx" />
+    <EmbeddedResource Include="frmProveedor.resx" />
   </ItemGroup>
 </Project>
