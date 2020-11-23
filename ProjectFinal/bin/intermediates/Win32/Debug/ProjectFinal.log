@@ -1,11 +1,3 @@
-﻿  frmCliente.cpp
-  frmEmpleado.cpp
-  frmLogin.cpp
-  frmPrincipal.cpp
-  frmProducto.cpp
-  frmProveedor.cpp
-  Main.cpp
-  Generando código...
-  .NETFramework,Version=v4.5.1.AssemblyAttributes.cpp
+﻿  frmLogin.cpp
   frmCliente.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   ProjectFinal.vcxproj -> C:\Users\Usuario\Desktop\FinalCompiladores\ProjectFinal\\bin\Win32\Debug\ProjectFinal.exe

@@ -1,114 +1,119 @@
---Empleados
-create table usuarios
-(
-	-- id numero autoincrementable
-	id int not null identity (1,1),--
-	username varchar(50) not null,
-	pass varchar(50) not null
-);
-
---Usuarios o Empleados (Normalizar)
--- create table usuarios
--- (
--- 	codigo varchar(10) not null,
--- 	nombre varchar(50) not null,
--- 	apellido varchar(50) not null,
--- 	direccion varchar(200) not null
--- );
-
-alter table usuarios add primary key(codigo);
-alter table usuarios add unique(username);
-
-create table clientes
+create table Empleados
 (
 	codigo varchar(10) not null,
-	dni varchar(12) not null,
-	nombre varchar(50),
-	ape_paterno varchar(50),
-	ape_materno varchar(50),
-	--telefono
-	--genero
+	dni varchar(10) not null,
+	username varchar(30) not null,
+	pass varchar(30) not null,
+	Nombre varchar(50) not null,
+	Apellidos varchar(50) not null,
+	telefono varchar(10) not null,
+	email varchar(200) not null,
+	fechaNac date,
+)
+
+alter table Empleados add primary key(codigo);
+
+create table Clientes
+(
+	codigo varchar(10) not null,
+	dni varchar(10) not null,
+	nombre varchar(200) not null,
+	telefono varchar(10) not null,
+	email varchar(200) not null,
+	genero varchar(10) not null,
+	fechaNac date,
 );
 
-alter table clientes add primary key(codigo)
+alter table Clientes add primary key(codigo);
+
+create table proveedores
+(
+	codigo varchar(10) not null,
+	nombre_contacto varchar(50) not null,
+	--Categoria de productos(perifericos, Almacenamiento, Redes, Juegos)
+	categoria varchar(50) not null,
+	empresa varchar(50) not null,
+	direccion varchar(200) not null,
+	telefono varchar(12) not null
+);
 
 create table productos
 (
 	--id int identity(1,1), id numero autoincrementable
 	codigo varchar(10) not null,
-	descripcion varchar(100),
-	cantidad int,--stock
-	precio numeric
-);
-
-alter table productos add primary key(codigo)
-
-create table proveedores
-(
-	codigo varchar(10) not null,
 	nombre varchar(50),
-	--Categoria de productos
-	categoria varchar(50)
-	--dni varchar(12) not null,
-	--empresa
-	--ruc
-);
-
-alter table proveedores add primary key(codigo);
---compra
-create table ingreso_productos
-(
-	--codigo empleado
-	--precio compra product
-	codigo varchar(10) not null,
-	cod_producto varchar(10) not null,
-	cod_proveedor varchar(10) not null,
+	linea varchar(50) not null,
+	precio_compra numeric,
+	precio_venta numeric,
 	cantidad int,
-	total_compra numeric,
-	fecha date
 );
 
-
-alter table ingreso_productos add primary key(codigo)
-alter table ingreso_productos add foreign key(cod_producto) references productos(codigo)
-alter table ingreso_productos add foreign key(cod_proveedor) references proveedores(codigo)
---venta
-create table salida_productos
-(
-	--codigo empleado
-	--precio venta product
-	codigo varchar(10) not null,
-	cod_producto varchar(10) not null,
-	cod_cliente varchar(10) not null,
-	cantidad int,
-	total_venta numeric,
-	fecha date
-);
-
-
-alter table salida_productos add primary key(codigo)
-
-alter table salida_productos add foreign key(cod_producto) references productos(codigo)
-alter table salida_productos add foreign key(cod_cliente) references clientes(codigo)
-
-/*Boletas, Facturas... */
-create table reportes_salida
+create table boletas
 (
 	codigo varchar(10) not null,
-	codigo_usuario varchar(10) not null,
-	codigo_cliente varchar(10) not null,
-	codigo_salida varchar(10) not null,
-	tipo_documento varchar(50),
-	num_documento varchar(12),
-	fecha date
-	--detalle productos
-	--
+	numero varchar(12) not null,
 );
 
-alter table reportes_salida add primary key(codigo)
-alter table reporte_salida add foreign key(codigo_usuario) references usuarios(codigo)
-alter table reporte_salida add foreign key(codigo_cliente) references clientes(codigo)
-alter table reporte_salida add foreign key(codigo_salida) references salida_productos(codigo)
+alter table Boletas add primary key(codigo);
+
+create table facturas
+(
+	codigo varchar(10) not null,
+	numero varchar(12) not null,
+);
+
+alter table facturas add primary key(codigo);
+
+create table ventas
+(
+	codigo varchar(10) not null,
+	numero varchar(12) not null,
+	codigo_cliente varchar(200) not null,
+	codigo_empleado varchar(200) not null,
+	tipo_comprobante varchar(50) not null,
+	numero_comprobante varchar(10) not null,
+	--subtotal
+	importe float not null,
+	igv float not null,
+	total float not null,
+	fecha date,
+);
+
+alter table ventas add primary key(codigo);
+
+-- intermedia venta - producto
+create table Detalles
+(
+	codigo_producto varchar(10) not null,
+	nombre_producto varchar(100) not null,
+	precio_producto float not null,
+	cantidad_producto int not null,
+	importe_producto float not null,
+	codigo_venta varchar(10) not null
+)
+alter table detalles add foreign key(codigo_venta) references venta(codigo)
 
 
 
+insert into Cliente
+values('48512995', 'Alexis Suarez Alvarez', '975516965', 'alexis.sualv@gmail.com', 'Masculino', '2000-04-12')
+insert into Cliente
+values('48515524', 'Jonas Silva Meza', '985698458', 'jonasSilv@hotmail.com', 'Masculino', '1998-05-11')
+
+select day(fechaNac_cliente)
+from cliente
+select *
+from cliente
+select nombre_Cliente
+from cliente
+
+insert into Empleado
+values('48512975', 'manolito', 'jugador', 'Manuel Lopez Obrador', '975516965', 'manlidtoov@gmail.com', '2001-08-11')
+insert into Empleado
+values('65184659', 'esther', 'diandra19', 'Esther Valle Diandra', '998698251', 'delVallue@gmail.com', '1995-12-25')
+
+
+select month(fech_empleado)
+from empleado
+select *
+from Empleado

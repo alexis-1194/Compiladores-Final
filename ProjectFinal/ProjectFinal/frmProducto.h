@@ -58,6 +58,8 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::Label^  lblNombre;
 	private: System::Windows::Forms::Label^  lblDNI;
 	private: System::Windows::Forms::DataGridView^  dgvLista;
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
@@ -66,6 +68,8 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column8;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	private: System::Windows::Forms::Button^  btnImprimir;
+
 
 	protected:
 
@@ -111,9 +115,9 @@ namespace ProjectFinal {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->cboProveedor = (gcnew System::Windows::Forms::ComboBox());
 			this->txtCantidad = (gcnew System::Windows::Forms::TextBox());
@@ -144,6 +148,7 @@ namespace ProjectFinal {
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btnImprimir = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -386,15 +391,15 @@ namespace ProjectFinal {
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
 			this->dgvLista->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvLista->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::HotTrack;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::HotTrack;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvLista->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvLista->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvLista->ColumnHeadersHeight = 30;
 			this->dgvLista->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvLista->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
@@ -407,24 +412,24 @@ namespace ProjectFinal {
 			this->dgvLista->Name = L"dgvLista";
 			this->dgvLista->ReadOnly = true;
 			this->dgvLista->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::SteelBlue;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvLista->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
+			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::SteelBlue;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvLista->RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::SteelBlue;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::White;
-			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::SteelBlue;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::White;
+			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle6;
 			this->dgvLista->Size = System::Drawing::Size(442, 456);
 			this->dgvLista->TabIndex = 128;
 			// 
@@ -484,11 +489,25 @@ namespace ProjectFinal {
 			this->Column7->ReadOnly = true;
 			this->Column7->Width = 103;
 			// 
+			// btnImprimir
+			// 
+			this->btnImprimir->Enabled = false;
+			this->btnImprimir->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnImprimir->Location = System::Drawing::Point(242, 232);
+			this->btnImprimir->Name = L"btnImprimir";
+			this->btnImprimir->Size = System::Drawing::Size(75, 23);
+			this->btnImprimir->TabIndex = 150;
+			this->btnImprimir->Text = L"Imprimir";
+			this->btnImprimir->UseVisualStyleBackColor = true;
+			this->btnImprimir->Click += gcnew System::EventHandler(this, &frmProducto::btnImprimir_Click);
+			// 
 			// frmProducto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(775, 477);
+			this->Controls->Add(this->btnImprimir);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->cboProveedor);
 			this->Controls->Add(this->txtCantidad);
@@ -638,13 +657,16 @@ namespace ProjectFinal {
 				pro.setDescripcion(dao.StringToChar(txtNombre->Text));
 				pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
 				pro.setPrecio(Convert::ToDouble(txtPrecio_venta->Text));
-				//dao.productoProcesar(pro, 1);
+				dao.productoProcesar(pro, 1);
 				MessageBox::Show("Codigo valido");
 			}
 			else {
 				MessageBox::Show("Codigo no valido");
 			}
 		}
+	}
+	private: System::Void btnImprimir_Click(System::Object^  sender, System::EventArgs^  e) {
+		
 	}
 	};
 }

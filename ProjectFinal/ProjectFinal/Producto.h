@@ -78,7 +78,7 @@ bool Producto::validar()
 {
 	char cadena[11];
 	strcpy_s(cadena, this->getCodigo());
-	if (strlen(cadena) == 10) {
+	if (strlen(cadena) == 10) {//PROD_00001
 		int estado = q0;
 		for (int i = 0; i < (int)strlen(cadena); i++)
 		{

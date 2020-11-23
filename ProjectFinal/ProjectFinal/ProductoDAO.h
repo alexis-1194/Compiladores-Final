@@ -8,11 +8,11 @@ public:
 
 	list<Producto> consultar();
 
-	void operator +=(Producto obj);
+	void operator +=(Producto obj);//INSERTAR
 
-	void operator *=(Producto obj);
+	void operator *=(Producto obj);//ACTUALZAR
 
-	void operator -=(Producto obj);
+	void operator -=(Producto obj);//ELIMINAR
 
 	void productoProcesar(Producto obj, int opcion);
 
