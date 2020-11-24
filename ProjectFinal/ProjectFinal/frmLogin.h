@@ -186,12 +186,13 @@ namespace ProjectFinal {
 			MessageBox::Show("Complete campo Contraseña");
 		}
 		else {
-			list<Usuario> listaUsuarios;
+			vector<Usuario> listaUsuarios;
 			UsuarioDAO dao;
+
 			listaUsuarios = dao.consultar();//cargar datos de usuario
 			for (Usuario user : listaUsuarios) {
 				if (txtUser->Text == gcnew String(user.getUserName()) &&
-					txtPassword->Text == gcnew String(user.getPassword())) {
+					txtPassword->Text == gcnew String(user.getPassWord())) {
 					this->Visible = false;
 					//Esconder ventana login
 					/*strcpy_s(usuarioActual, lista_empAux[i].nombre);*/
@@ -213,8 +214,8 @@ namespace ProjectFinal {
 	private: System::Void ptrCerrar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Application::Exit();
 	}
-	private: int xmove = 0;
-	private: int ymove = 0;
+	private: static int xmove = 0;
+	private: static int ymove = 0;
 	private: void accionMoverVentana(System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button != System::Windows::Forms::MouseButtons::Left)
 		{

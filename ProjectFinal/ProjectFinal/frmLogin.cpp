@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <vector>
 #include <list>
 using namespace System;
 using namespace System::Windows::Forms;

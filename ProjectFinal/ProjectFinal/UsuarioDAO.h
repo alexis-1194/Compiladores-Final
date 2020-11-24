@@ -6,7 +6,7 @@ public:
 	//CRUD
 	char* StringToChar(String ^m);
 
-	list<Usuario> consultar();
+	vector<Usuario> consultar();
 
 	void operator +=(Usuario obj);//INSERTAR
 
@@ -35,23 +35,45 @@ char* UsuarioDAO::StringToChar(String ^m) {
 	return aux2;
 }
 
-list<Usuario> UsuarioDAO::consultar() {
-	list<Usuario> lista;
+vector<Usuario> UsuarioDAO::consultar() {
+	vector<Usuario> lista;
 	SqlConnection ^cn = Conexion::getConnection();
 	try {
-		SqlCommand ^command = gcnew SqlCommand("SELECT * FROM usuarios", cn);
-
+		SqlCommand ^command = gcnew SqlCommand("select * from empleados", cn);
 		cn->Open();
 		SqlDataReader ^dr = command->ExecuteReader();
+
 		while (dr->Read() == true) {
+
 			String ^m;
 			Usuario usu;
+
+			m = dr["codigo"]->ToString();
+			usu.setCodigo(StringToChar(m));
+
+			m = dr["dni"]->ToString();
+			usu.setDni(StringToChar(m));
 
 			m = dr["username"]->ToString();
 			usu.setUserName(StringToChar(m));
 
 			m = dr["pass"]->ToString();
 			usu.setPassWord(StringToChar(m));
+
+			m = dr["apellidos"]->ToString();
+			usu.setApellidos(StringToChar(m));
+
+			m = dr["nombre"]->ToString();
+			usu.setNombre(StringToChar(m));
+
+			m = dr["telefono"]->ToString();
+			usu.setTelefono(StringToChar(m));
+
+			m = dr["email"]->ToString();
+			usu.setEmail(StringToChar(m));
+
+			m = dr["fechaNac"]->ToString();
+			usu.setFecha(StringToChar(m));
 
 			lista.push_back(usu);
 		}
@@ -73,9 +95,18 @@ void UsuarioDAO::operator +=(Usuario obj) {//REGISTRAR
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"INSERT INTO usuarios values(@nomb, @pass)";
-		command->Parameters->AddWithValue("@nomb", gcnew String(obj.getUserName()));
-		command->Parameters->AddWithValue("@pass", gcnew String(obj.getPassword()));
+			"INSERT INTO empleados values(@codigo, @dni,@username,@pass,@nombre,"
+			+ "@apellidos,@telefono,@email,@fechaNac)";
+
+		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
+		command->Parameters->AddWithValue("@dni", gcnew String(obj.getDni()));
+		command->Parameters->AddWithValue("@username", gcnew String(obj.getUserName()));
+		command->Parameters->AddWithValue("@pass", gcnew String(obj.getPassWord()));
+		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getNombre()));
+		command->Parameters->AddWithValue("@apellidos", gcnew String(obj.getApellidos()));
+		command->Parameters->AddWithValue("@telefono", gcnew String(obj.getTelefono()));
+		command->Parameters->AddWithValue("@email", gcnew String(obj.getEmail()));
+		command->Parameters->AddWithValue("@fechaNac", gcnew String(obj.getFecha()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Registrado");
@@ -94,9 +125,21 @@ void UsuarioDAO::operator *=(Usuario obj) {//actualizar
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"UPDATE usuarios set pass = @pass where username = @nomb";
-		command->Parameters->AddWithValue("@nomb", gcnew String(obj.getUserName()));
-		command->Parameters->AddWithValue("@pass", gcnew String(obj.getPassword()));
+			"UPDATE empleados set dni = @dni, username = @username, pass = @pass,"
+			+ "nombre = @nombre, apellidos = @apellidos, telefono = @telefono,"
+			+ "email = @email, fechaNac = @fechaNac"
+			+ "where  codigo= @codigo";
+
+		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
+		command->Parameters->AddWithValue("@dni", gcnew String(obj.getDni()));
+		command->Parameters->AddWithValue("@username", gcnew String(obj.getUserName()));
+		command->Parameters->AddWithValue("@pass", gcnew String(obj.getPassWord()));
+		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getNombre()));
+		command->Parameters->AddWithValue("@apellidos", gcnew String(obj.getApellidos()));
+		command->Parameters->AddWithValue("@telefono", gcnew String(obj.getTelefono()));
+		command->Parameters->AddWithValue("@email", gcnew String(obj.getEmail()));
+		command->Parameters->AddWithValue("@fechaNac", gcnew String(obj.getFecha()));
+
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Actualizado");
@@ -115,8 +158,8 @@ void UsuarioDAO::operator -=(Usuario obj) {//eliminar
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"delete from usuarios where username = @nomb";
-		command->Parameters->AddWithValue("@nomb", gcnew String(obj.getUserName()));
+			"delete from empleados where username = @codigo";
+		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getUserName()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Eliminado");
@@ -127,7 +170,7 @@ void UsuarioDAO::operator -=(Usuario obj) {//eliminar
 	}
 }
 
-void UsuarioDAO::usuarioProcesar(Usuario obj,int opcion) {
+void UsuarioDAO::usuarioProcesar(Usuario obj, int opcion) {
 	switch (opcion)
 	{
 	case Constante::INS:
@@ -143,3 +186,6 @@ void UsuarioDAO::usuarioProcesar(Usuario obj,int opcion) {
 		break;
 	}
 }
+
+vector<Usuario> listaUsuarios;
+UsuarioDAO daoUsuario;

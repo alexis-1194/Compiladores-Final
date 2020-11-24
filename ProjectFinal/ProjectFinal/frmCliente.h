@@ -34,23 +34,23 @@ namespace ProjectFinal {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::GroupBox^  groupBox1;
+
 	protected:
-	private: System::Windows::Forms::RadioButton^  rbFemenino;
-	private: System::Windows::Forms::RadioButton^  rbMasculino;
-	private: System::Windows::Forms::TextBox^  txtBuscar;
-	private: System::Windows::Forms::Label^  label1;
+
+
+
+
 	private: System::Windows::Forms::Button^  btnBuscar;
 	private: System::Windows::Forms::Button^  btnGrabar;
 	private: System::Windows::Forms::Button^  btnEliminar;
 	private: System::Windows::Forms::Button^  btnModificar;
 	private: System::Windows::Forms::Button^  btnCancelar;
 	private: System::Windows::Forms::Button^  btnNuevo;
-	private: System::Windows::Forms::DateTimePicker^  dtpFecha;
-	private: System::Windows::Forms::TextBox^  txtNombre;
-	private: System::Windows::Forms::TextBox^  txtCelular;
-	private: System::Windows::Forms::TextBox^  txtCorreo;
-	private: System::Windows::Forms::TextBox^  txtDNI;
+
+
+
+
+
 	private: System::Windows::Forms::DataGridView^  dgvLista;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
@@ -59,11 +59,32 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::TextBox^  txtApellidos;
+
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::TextBox^  txtCodigo;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::RadioButton^  rbFemenino;
+	private: System::Windows::Forms::RadioButton^  rbMasculino;
+	private: System::Windows::Forms::TextBox^  txtBuscar;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::DateTimePicker^  dtpFecha;
+	private: System::Windows::Forms::TextBox^  txtNombre;
+	private: System::Windows::Forms::TextBox^  txtCelular;
+	private: System::Windows::Forms::TextBox^  txtCorreo;
+	private: System::Windows::Forms::TextBox^  txtDNI;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  lblCorreo;
 	private: System::Windows::Forms::Label^  lblCelular;
 	private: System::Windows::Forms::Label^  lblNombre;
 	private: System::Windows::Forms::Label^  lblDNI;
+
+
+
+
+
 
 	protected:
 
@@ -111,22 +132,12 @@ namespace ProjectFinal {
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->rbFemenino = (gcnew System::Windows::Forms::RadioButton());
-			this->rbMasculino = (gcnew System::Windows::Forms::RadioButton());
-			this->txtBuscar = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btnBuscar = (gcnew System::Windows::Forms::Button());
 			this->btnGrabar = (gcnew System::Windows::Forms::Button());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->btnModificar = (gcnew System::Windows::Forms::Button());
 			this->btnCancelar = (gcnew System::Windows::Forms::Button());
 			this->btnNuevo = (gcnew System::Windows::Forms::Button());
-			this->dtpFecha = (gcnew System::Windows::Forms::DateTimePicker());
-			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
-			this->txtCelular = (gcnew System::Windows::Forms::TextBox());
-			this->txtCorreo = (gcnew System::Windows::Forms::TextBox());
-			this->txtDNI = (gcnew System::Windows::Forms::TextBox());
 			this->dgvLista = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -135,71 +146,30 @@ namespace ProjectFinal {
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->txtApellidos = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->txtCodigo = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->rbFemenino = (gcnew System::Windows::Forms::RadioButton());
+			this->rbMasculino = (gcnew System::Windows::Forms::RadioButton());
+			this->txtBuscar = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dtpFecha = (gcnew System::Windows::Forms::DateTimePicker());
+			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
+			this->txtCelular = (gcnew System::Windows::Forms::TextBox());
+			this->txtCorreo = (gcnew System::Windows::Forms::TextBox());
+			this->txtDNI = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->lblCorreo = (gcnew System::Windows::Forms::Label());
 			this->lblCelular = (gcnew System::Windows::Forms::Label());
 			this->lblNombre = (gcnew System::Windows::Forms::Label());
 			this->lblDNI = (gcnew System::Windows::Forms::Label());
-			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->BeginInit();
+			this->groupBox2->SuspendLayout();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// groupBox1
-			// 
-			this->groupBox1->Controls->Add(this->rbFemenino);
-			this->groupBox1->Controls->Add(this->rbMasculino);
-			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(243, 111);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(109, 61);
-			this->groupBox1->TabIndex = 86;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Genero";
-			// 
-			// rbFemenino
-			// 
-			this->rbFemenino->AutoSize = true;
-			this->rbFemenino->Location = System::Drawing::Point(8, 38);
-			this->rbFemenino->Name = L"rbFemenino";
-			this->rbFemenino->Size = System::Drawing::Size(89, 21);
-			this->rbFemenino->TabIndex = 38;
-			this->rbFemenino->TabStop = true;
-			this->rbFemenino->Text = L"Femenino";
-			this->rbFemenino->UseVisualStyleBackColor = true;
-			// 
-			// rbMasculino
-			// 
-			this->rbMasculino->AutoSize = true;
-			this->rbMasculino->Location = System::Drawing::Point(8, 15);
-			this->rbMasculino->Name = L"rbMasculino";
-			this->rbMasculino->Size = System::Drawing::Size(90, 21);
-			this->rbMasculino->TabIndex = 37;
-			this->rbMasculino->TabStop = true;
-			this->rbMasculino->Text = L"Masculino";
-			this->rbMasculino->UseVisualStyleBackColor = true;
-			// 
-			// txtBuscar
-			// 
-			this->txtBuscar->Enabled = false;
-			this->txtBuscar->Location = System::Drawing::Point(133, 140);
-			this->txtBuscar->MaxLength = 8;
-			this->txtBuscar->Name = L"txtBuscar";
-			this->txtBuscar->Size = System::Drawing::Size(16, 20);
-			this->txtBuscar->TabIndex = 85;
-			this->txtBuscar->Visible = false;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(21, 145);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(95, 17);
-			this->label1->TabIndex = 84;
-			this->label1->Text = L"Modificar DNI";
-			this->label1->Visible = false;
 			// 
 			// btnBuscar
 			// 
@@ -225,6 +195,7 @@ namespace ProjectFinal {
 			this->btnGrabar->TabIndex = 82;
 			this->btnGrabar->Text = L"Grabar";
 			this->btnGrabar->UseVisualStyleBackColor = true;
+			this->btnGrabar->Click += gcnew System::EventHandler(this, &frmCliente::btnGrabar_Click);
 			// 
 			// btnEliminar
 			// 
@@ -237,6 +208,7 @@ namespace ProjectFinal {
 			this->btnEliminar->TabIndex = 81;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = true;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &frmCliente::btnEliminar_Click);
 			// 
 			// btnModificar
 			// 
@@ -249,6 +221,7 @@ namespace ProjectFinal {
 			this->btnModificar->TabIndex = 80;
 			this->btnModificar->Text = L"Modificar";
 			this->btnModificar->UseVisualStyleBackColor = true;
+			this->btnModificar->Click += gcnew System::EventHandler(this, &frmCliente::btnModificar_Click);
 			// 
 			// btnCancelar
 			// 
@@ -261,6 +234,7 @@ namespace ProjectFinal {
 			this->btnCancelar->TabIndex = 79;
 			this->btnCancelar->Text = L"Cancelar";
 			this->btnCancelar->UseVisualStyleBackColor = true;
+			this->btnCancelar->Click += gcnew System::EventHandler(this, &frmCliente::btnCancelar_Click);
 			// 
 			// btnNuevo
 			// 
@@ -272,51 +246,7 @@ namespace ProjectFinal {
 			this->btnNuevo->TabIndex = 78;
 			this->btnNuevo->Text = L"Nuevo";
 			this->btnNuevo->UseVisualStyleBackColor = true;
-			// 
-			// dtpFecha
-			// 
-			this->dtpFecha->Enabled = false;
-			this->dtpFecha->Format = System::Windows::Forms::DateTimePickerFormat::Short;
-			this->dtpFecha->Location = System::Drawing::Point(133, 111);
-			this->dtpFecha->Name = L"dtpFecha";
-			this->dtpFecha->Size = System::Drawing::Size(97, 20);
-			this->dtpFecha->TabIndex = 77;
-			// 
-			// txtNombre
-			// 
-			this->txtNombre->Enabled = false;
-			this->txtNombre->Location = System::Drawing::Point(133, 37);
-			this->txtNombre->MaxLength = 49;
-			this->txtNombre->Name = L"txtNombre";
-			this->txtNombre->Size = System::Drawing::Size(219, 20);
-			this->txtNombre->TabIndex = 76;
-			// 
-			// txtCelular
-			// 
-			this->txtCelular->Enabled = false;
-			this->txtCelular->Location = System::Drawing::Point(133, 61);
-			this->txtCelular->MaxLength = 9;
-			this->txtCelular->Name = L"txtCelular";
-			this->txtCelular->Size = System::Drawing::Size(219, 20);
-			this->txtCelular->TabIndex = 75;
-			// 
-			// txtCorreo
-			// 
-			this->txtCorreo->Enabled = false;
-			this->txtCorreo->Location = System::Drawing::Point(133, 85);
-			this->txtCorreo->MaxLength = 40;
-			this->txtCorreo->Name = L"txtCorreo";
-			this->txtCorreo->Size = System::Drawing::Size(219, 20);
-			this->txtCorreo->TabIndex = 74;
-			// 
-			// txtDNI
-			// 
-			this->txtDNI->Enabled = false;
-			this->txtDNI->Location = System::Drawing::Point(133, 11);
-			this->txtDNI->MaxLength = 8;
-			this->txtDNI->Name = L"txtDNI";
-			this->txtDNI->Size = System::Drawing::Size(219, 20);
-			this->txtDNI->TabIndex = 73;
+			this->btnNuevo->Click += gcnew System::EventHandler(this, &frmCliente::btnNuevo_Click);
 			// 
 			// dgvLista
 			// 
@@ -348,7 +278,7 @@ namespace ProjectFinal {
 			});
 			this->dgvLista->EnableHeadersVisualStyles = false;
 			this->dgvLista->GridColor = System::Drawing::Color::SteelBlue;
-			this->dgvLista->Location = System::Drawing::Point(14, 188);
+			this->dgvLista->Location = System::Drawing::Point(14, 255);
 			this->dgvLista->Name = L"dgvLista";
 			this->dgvLista->ReadOnly = true;
 			this->dgvLista->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
@@ -370,7 +300,7 @@ namespace ProjectFinal {
 			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::SteelBlue;
 			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::White;
 			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle3;
-			this->dgvLista->Size = System::Drawing::Size(440, 253);
+			this->dgvLista->Size = System::Drawing::Size(440, 186);
 			this->dgvLista->TabIndex = 72;
 			// 
 			// Column1
@@ -422,15 +352,183 @@ namespace ProjectFinal {
 			this->Column7->ReadOnly = true;
 			this->Column7->Width = 89;
 			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->txtApellidos);
+			this->groupBox2->Controls->Add(this->label3);
+			this->groupBox2->Controls->Add(this->txtCodigo);
+			this->groupBox2->Controls->Add(this->label2);
+			this->groupBox2->Controls->Add(this->groupBox1);
+			this->groupBox2->Controls->Add(this->txtBuscar);
+			this->groupBox2->Controls->Add(this->label1);
+			this->groupBox2->Controls->Add(this->dtpFecha);
+			this->groupBox2->Controls->Add(this->txtNombre);
+			this->groupBox2->Controls->Add(this->txtCelular);
+			this->groupBox2->Controls->Add(this->txtCorreo);
+			this->groupBox2->Controls->Add(this->txtDNI);
+			this->groupBox2->Controls->Add(this->label5);
+			this->groupBox2->Controls->Add(this->lblCorreo);
+			this->groupBox2->Controls->Add(this->lblCelular);
+			this->groupBox2->Controls->Add(this->lblNombre);
+			this->groupBox2->Controls->Add(this->lblDNI);
+			this->groupBox2->Location = System::Drawing::Point(12, 9);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(361, 240);
+			this->groupBox2->TabIndex = 87;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"DATOS";
+			// 
+			// txtApellidos
+			// 
+			this->txtApellidos->Enabled = false;
+			this->txtApellidos->Location = System::Drawing::Point(130, 92);
+			this->txtApellidos->MaxLength = 49;
+			this->txtApellidos->Name = L"txtApellidos";
+			this->txtApellidos->Size = System::Drawing::Size(219, 20);
+			this->txtApellidos->TabIndex = 103;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(12, 95);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(66, 17);
+			this->label3->TabIndex = 102;
+			this->label3->Text = L"Apellidos";
+			// 
+			// txtCodigo
+			// 
+			this->txtCodigo->Enabled = false;
+			this->txtCodigo->Location = System::Drawing::Point(130, 14);
+			this->txtCodigo->MaxLength = 10;
+			this->txtCodigo->Name = L"txtCodigo";
+			this->txtCodigo->Size = System::Drawing::Size(219, 20);
+			this->txtCodigo->TabIndex = 101;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(12, 17);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(58, 17);
+			this->label2->TabIndex = 100;
+			this->label2->Text = L"Codigo";
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->rbFemenino);
+			this->groupBox1->Controls->Add(this->rbMasculino);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->Location = System::Drawing::Point(240, 173);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(109, 61);
+			this->groupBox1->TabIndex = 99;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Genero";
+			// 
+			// rbFemenino
+			// 
+			this->rbFemenino->AutoSize = true;
+			this->rbFemenino->Location = System::Drawing::Point(8, 38);
+			this->rbFemenino->Name = L"rbFemenino";
+			this->rbFemenino->Size = System::Drawing::Size(89, 21);
+			this->rbFemenino->TabIndex = 38;
+			this->rbFemenino->TabStop = true;
+			this->rbFemenino->Text = L"Femenino";
+			this->rbFemenino->UseVisualStyleBackColor = true;
+			// 
+			// rbMasculino
+			// 
+			this->rbMasculino->AutoSize = true;
+			this->rbMasculino->Location = System::Drawing::Point(8, 15);
+			this->rbMasculino->Name = L"rbMasculino";
+			this->rbMasculino->Size = System::Drawing::Size(90, 21);
+			this->rbMasculino->TabIndex = 37;
+			this->rbMasculino->TabStop = true;
+			this->rbMasculino->Text = L"Masculino";
+			this->rbMasculino->UseVisualStyleBackColor = true;
+			// 
+			// txtBuscar
+			// 
+			this->txtBuscar->Enabled = false;
+			this->txtBuscar->Location = System::Drawing::Point(130, 202);
+			this->txtBuscar->MaxLength = 8;
+			this->txtBuscar->Name = L"txtBuscar";
+			this->txtBuscar->Size = System::Drawing::Size(16, 20);
+			this->txtBuscar->TabIndex = 98;
+			this->txtBuscar->Visible = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(18, 207);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(95, 17);
+			this->label1->TabIndex = 97;
+			this->label1->Text = L"Modificar DNI";
+			this->label1->Visible = false;
+			// 
+			// dtpFecha
+			// 
+			this->dtpFecha->Enabled = false;
+			this->dtpFecha->Format = System::Windows::Forms::DateTimePickerFormat::Short;
+			this->dtpFecha->Location = System::Drawing::Point(130, 173);
+			this->dtpFecha->Name = L"dtpFecha";
+			this->dtpFecha->Size = System::Drawing::Size(97, 20);
+			this->dtpFecha->TabIndex = 96;
+			// 
+			// txtNombre
+			// 
+			this->txtNombre->Enabled = false;
+			this->txtNombre->Location = System::Drawing::Point(130, 66);
+			this->txtNombre->MaxLength = 49;
+			this->txtNombre->Name = L"txtNombre";
+			this->txtNombre->Size = System::Drawing::Size(219, 20);
+			this->txtNombre->TabIndex = 95;
+			// 
+			// txtCelular
+			// 
+			this->txtCelular->Enabled = false;
+			this->txtCelular->Location = System::Drawing::Point(130, 123);
+			this->txtCelular->MaxLength = 9;
+			this->txtCelular->Name = L"txtCelular";
+			this->txtCelular->Size = System::Drawing::Size(219, 20);
+			this->txtCelular->TabIndex = 94;
+			// 
+			// txtCorreo
+			// 
+			this->txtCorreo->Enabled = false;
+			this->txtCorreo->Location = System::Drawing::Point(130, 147);
+			this->txtCorreo->MaxLength = 40;
+			this->txtCorreo->Name = L"txtCorreo";
+			this->txtCorreo->Size = System::Drawing::Size(219, 20);
+			this->txtCorreo->TabIndex = 93;
+			// 
+			// txtDNI
+			// 
+			this->txtDNI->Enabled = false;
+			this->txtDNI->Location = System::Drawing::Point(130, 40);
+			this->txtDNI->MaxLength = 8;
+			this->txtDNI->Name = L"txtDNI";
+			this->txtDNI->Size = System::Drawing::Size(219, 20);
+			this->txtDNI->TabIndex = 92;
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(15, 116);
+			this->label5->Location = System::Drawing::Point(12, 178);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(82, 17);
-			this->label5->TabIndex = 71;
+			this->label5->TabIndex = 91;
 			this->label5->Text = L"Fecha Nac.";
 			// 
 			// lblCorreo
@@ -438,10 +536,10 @@ namespace ProjectFinal {
 			this->lblCorreo->AutoSize = true;
 			this->lblCorreo->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblCorreo->Location = System::Drawing::Point(15, 92);
+			this->lblCorreo->Location = System::Drawing::Point(12, 154);
 			this->lblCorreo->Name = L"lblCorreo";
 			this->lblCorreo->Size = System::Drawing::Size(129, 17);
-			this->lblCorreo->TabIndex = 70;
+			this->lblCorreo->TabIndex = 90;
 			this->lblCorreo->Text = L"Correo Electronico";
 			// 
 			// lblCelular
@@ -449,10 +547,10 @@ namespace ProjectFinal {
 			this->lblCelular->AutoSize = true;
 			this->lblCelular->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblCelular->Location = System::Drawing::Point(15, 68);
+			this->lblCelular->Location = System::Drawing::Point(12, 125);
 			this->lblCelular->Name = L"lblCelular";
 			this->lblCelular->Size = System::Drawing::Size(54, 17);
-			this->lblCelular->TabIndex = 69;
+			this->lblCelular->TabIndex = 89;
 			this->lblCelular->Text = L"Celular";
 			// 
 			// lblNombre
@@ -460,10 +558,10 @@ namespace ProjectFinal {
 			this->lblNombre->AutoSize = true;
 			this->lblNombre->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblNombre->Location = System::Drawing::Point(15, 40);
+			this->lblNombre->Location = System::Drawing::Point(12, 69);
 			this->lblNombre->Name = L"lblNombre";
 			this->lblNombre->Size = System::Drawing::Size(61, 17);
-			this->lblNombre->TabIndex = 68;
+			this->lblNombre->TabIndex = 88;
 			this->lblNombre->Text = L"Nombre";
 			// 
 			// lblDNI
@@ -471,10 +569,10 @@ namespace ProjectFinal {
 			this->lblDNI->AutoSize = true;
 			this->lblDNI->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblDNI->Location = System::Drawing::Point(15, 14);
+			this->lblDNI->Location = System::Drawing::Point(12, 43);
 			this->lblDNI->Name = L"lblDNI";
 			this->lblDNI->Size = System::Drawing::Size(31, 17);
-			this->lblDNI->TabIndex = 67;
+			this->lblDNI->TabIndex = 87;
 			this->lblDNI->Text = L"DNI";
 			// 
 			// frmCliente
@@ -482,35 +580,79 @@ namespace ProjectFinal {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(469, 450);
-			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->txtBuscar);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->btnBuscar);
 			this->Controls->Add(this->btnGrabar);
 			this->Controls->Add(this->btnEliminar);
 			this->Controls->Add(this->btnModificar);
 			this->Controls->Add(this->btnCancelar);
 			this->Controls->Add(this->btnNuevo);
-			this->Controls->Add(this->dtpFecha);
-			this->Controls->Add(this->txtNombre);
-			this->Controls->Add(this->txtCelular);
-			this->Controls->Add(this->txtCorreo);
-			this->Controls->Add(this->txtDNI);
 			this->Controls->Add(this->dgvLista);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->lblCorreo);
-			this->Controls->Add(this->lblCelular);
-			this->Controls->Add(this->lblNombre);
-			this->Controls->Add(this->lblDNI);
 			this->Name = L"frmCliente";
 			this->Text = L"frmCliente";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->EndInit();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
+
+	private: static int opc;//cambiar a "private: static in opc;"
+
+	private: void habilitar() {
+		opc = 1;
+		btnNuevo->Enabled = false;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = true;
+		btnCancelar->Enabled = true;
+		dgvLista->Enabled = false;
+		dtpFecha->Enabled = true;
+
+		txtCodigo->Enabled = true;
+		txtDNI->Enabled = true; txtNombre->Enabled = true; txtApellidos->Enabled = true;
+		txtCelular->Enabled = true; txtCorreo->Enabled = true;
+		txtBuscar->Enabled = true;
+		txtCodigo->Text = "";	txtDNI->Text = "";	txtNombre->Text = "";
+		txtApellidos->Text = ""; txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";
+		txtDNI->Select();
+	}
+
+	private: void deshabilitar() {
+		opc = 0;
+		btnNuevo->Enabled = true;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = false;
+		btnCancelar->Enabled = false;
+		dgvLista->Enabled = true;
+
+		txtCodigo->Enabled = false;
+		txtDNI->Enabled = false;
+		txtNombre->Enabled = false;
+		txtCelular->Enabled = false;
+		txtCorreo->Enabled = false;
+		dtpFecha->Enabled = false;
+		txtBuscar->Enabled = false;
+		txtCodigo->Text = ""; txtDNI->Text = "";	txtNombre->Text = "";
+		txtApellidos->Text = ""; txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";
+	}
+	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
+		habilitar();
+	}
+	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
+		deshabilitar();
+	}
+	private: System::Void btnModificar_Click(System::Object^  sender, System::EventArgs^  e) {
+		habilitar();
+	}
+	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+	private: System::Void btnGrabar_Click(System::Object^  sender, System::EventArgs^  e) {
+	}
 	};
 }

@@ -606,7 +606,7 @@ namespace ProjectFinal {
 	}
 	private: void Codigo() {
 		char cod[11]; int n;
-		list<Producto> lista = dao.consultar();
+		list<Producto> lista = daoProducto.consultar();
 		for (Producto pro : lista) {
 			strcpy_s(cod, pro.getCodigo());
 		}
@@ -651,13 +651,13 @@ namespace ProjectFinal {
 		}*/
 		else {
 			Producto pro;
-			//dao = ProductoDAO();
-			pro.setCodigo(dao.StringToChar(txtCodigo->Text));
+			//daoProducto = ProductodaoProducto();
+			pro.setCodigo(daoProducto.StringToChar(txtCodigo->Text));
 			if (pro.validar()) {
-				pro.setDescripcion(dao.StringToChar(txtNombre->Text));
+				pro.setDescripcion(daoProducto.StringToChar(txtNombre->Text));
 				pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
 				pro.setPrecio(Convert::ToDouble(txtPrecio_venta->Text));
-				dao.productoProcesar(pro, 1);
+				daoProducto.productoProcesar(pro, 1);
 				MessageBox::Show("Codigo valido");
 			}
 			else {

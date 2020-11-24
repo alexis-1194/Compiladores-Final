@@ -434,8 +434,8 @@ namespace ProjectFinal {
 		Application::Exit();
 	}
 
-	private: int xmove = 0;
-	private: int ymove = 0;
+	private: static int xmove = 0;
+	private: static int ymove = 0;
 	private: void accionMoverVentana(System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button != System::Windows::Forms::MouseButtons::Left)
 		{

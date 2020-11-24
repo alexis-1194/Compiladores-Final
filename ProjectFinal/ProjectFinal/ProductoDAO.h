@@ -160,4 +160,5 @@ void ProductoDAO::productoProcesar(Producto obj, int opcion)
 	}
 }
 
-ProductoDAO dao;
+list<Producto> listaProducto;
+ProductoDAO daoProducto;
