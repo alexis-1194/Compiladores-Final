@@ -6,13 +6,19 @@ public:
 
 	void setCodigo(char *codigo);
 	void setDescripcion(char *descripcion);
+	void setLinea(char *linea);
+	void setPrecioCompra(double precioCompra);
+	void setPrecioVenta(double precioVenta);
 	void setCantidad(int cantidad);
-	void setPrecio(double precio);
+	void setCodigoProveedor(char *codigoProveedor);
 
 	char* getCodigo();
 	char* getDescripcion();
+	char* getLinea();
+	double getPrecioCompra();
+	double getPrecioVenta();
 	int getCantidad();
-	double getPrecio();
+	char* getCodigoProveedor();
 
 	bool validar();
 
@@ -20,8 +26,11 @@ private:
 	int q0, q1, q2, q3, q4, q5, error;
 	char codigo[11];
 	char descripcion[100];
+	char linea[50];
+	double precioCompra;
+	double precioVenta;
 	int cantidad;
-	double precio;
+	char codigoProveedor[11];
 };
 
 Producto::Producto()
@@ -44,15 +53,32 @@ void Producto::setDescripcion(char * descripcion)
 	strcpy_s(this->descripcion, descripcion);
 }
 
+void Producto::setLinea(char * linea)
+{
+	strcpy_s(this->linea, linea);
+}
+
+void Producto::setPrecioCompra(double precio)
+{
+	this->precioCompra = precio;
+}
+
+void Producto::setPrecioVenta(double precio)
+{
+	this->precioVenta = precio;
+}
+
+
 void Producto::setCantidad(int cantidad)
 {
 	this->cantidad = cantidad;
 }
 
-void Producto::setPrecio(double precio)
+void Producto::setCodigoProveedor(char* codigoProveedor)
 {
-	this->precio = precio;
+	strcpy_s(this->codigoProveedor, codigoProveedor);
 }
+
 
 char * Producto::getCodigo()
 {
@@ -64,14 +90,29 @@ char * Producto::getDescripcion()
 	return this->descripcion;
 }
 
+char * Producto::getLinea()
+{
+	return this->linea;
+}
+
+
+double Producto::getPrecioCompra()
+{
+	return this->precioCompra;
+}
+
+double Producto::getPrecioVenta()
+{
+	return this->precioVenta;
+}
+
 int Producto::getCantidad()
 {
 	return this->cantidad;
 }
 
-double Producto::getPrecio()
-{
-	return this->precio;
+char* Producto::getCodigoProveedor() {
+	return this->codigoProveedor;
 }
 
 bool Producto::validar()
@@ -119,3 +160,5 @@ bool Producto::validar()
 	}
 	else return false;
 }
+
+

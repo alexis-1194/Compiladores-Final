@@ -52,13 +52,13 @@ namespace ProjectFinal {
 
 
 	private: System::Windows::Forms::DataGridView^  dgvLista;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+
+
+
+
+
+
+
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::TextBox^  txtApellidos;
 
@@ -80,6 +80,14 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::Label^  lblCelular;
 	private: System::Windows::Forms::Label^  lblNombre;
 	private: System::Windows::Forms::Label^  lblDNI;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column8;
 
 
 
@@ -146,6 +154,7 @@ namespace ProjectFinal {
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->txtApellidos = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -272,9 +281,9 @@ namespace ProjectFinal {
 			this->dgvLista->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvLista->ColumnHeadersHeight = 30;
 			this->dgvLista->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
-			this->dgvLista->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+			this->dgvLista->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
 				this->Column1, this->Column2,
-					this->Column3, this->Column4, this->Column5, this->Column6, this->Column7
+					this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8
 			});
 			this->dgvLista->EnableHeadersVisualStyles = false;
 			this->dgvLista->GridColor = System::Drawing::Color::SteelBlue;
@@ -302,55 +311,63 @@ namespace ProjectFinal {
 			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvLista->Size = System::Drawing::Size(440, 186);
 			this->dgvLista->TabIndex = 72;
+			this->dgvLista->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmCliente::dgvLista_CellClick);
 			// 
 			// Column1
 			// 
-			this->Column1->HeaderText = L"DNI";
+			this->Column1->HeaderText = L"CODIGO";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
-			this->Column1->Width = 54;
+			this->Column1->Width = 88;
 			// 
 			// Column2
 			// 
-			this->Column2->HeaderText = L"Nombre";
+			this->Column2->HeaderText = L"DNI";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
-			this->Column2->Width = 84;
+			this->Column2->Width = 54;
 			// 
 			// Column3
 			// 
-			this->Column3->HeaderText = L"Celular";
+			this->Column3->HeaderText = L"NOMBRE";
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
-			this->Column3->Width = 77;
+			this->Column3->Width = 85;
 			// 
 			// Column4
 			// 
-			this->Column4->HeaderText = L"Correo";
+			this->Column4->HeaderText = L"APELLIDOS";
 			this->Column4->Name = L"Column4";
 			this->Column4->ReadOnly = true;
-			this->Column4->Width = 76;
+			this->Column4->Width = 97;
 			// 
 			// Column5
 			// 
-			this->Column5->HeaderText = L"Fecha Nac.";
+			this->Column5->HeaderText = L"TELEFONO";
 			this->Column5->Name = L"Column5";
 			this->Column5->ReadOnly = true;
-			this->Column5->Width = 105;
+			this->Column5->Width = 94;
 			// 
 			// Column6
 			// 
-			this->Column6->HeaderText = L"Genero";
+			this->Column6->HeaderText = L"EMAIL";
 			this->Column6->Name = L"Column6";
 			this->Column6->ReadOnly = true;
-			this->Column6->Width = 79;
+			this->Column6->Width = 67;
 			// 
 			// Column7
 			// 
-			this->Column7->HeaderText = L"idCliente";
+			this->Column7->HeaderText = L"GENERO";
 			this->Column7->Name = L"Column7";
 			this->Column7->ReadOnly = true;
-			this->Column7->Width = 89;
+			this->Column7->Width = 85;
+			// 
+			// Column8
+			// 
+			this->Column8->HeaderText = L"FECHA NAC.";
+			this->Column8->Name = L"Column8";
+			this->Column8->ReadOnly = true;
+			this->Column8->Width = 111;
 			// 
 			// groupBox2
 			// 
@@ -590,6 +607,7 @@ namespace ProjectFinal {
 			this->Controls->Add(this->dgvLista);
 			this->Name = L"frmCliente";
 			this->Text = L"frmCliente";
+			this->Load += gcnew System::EventHandler(this, &frmCliente::frmCliente_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -616,6 +634,8 @@ namespace ProjectFinal {
 		txtDNI->Enabled = true; txtNombre->Enabled = true; txtApellidos->Enabled = true;
 		txtCelular->Enabled = true; txtCorreo->Enabled = true;
 		txtBuscar->Enabled = true;
+		groupBox2->Enabled = true;
+
 		txtCodigo->Text = "";	txtDNI->Text = "";	txtNombre->Text = "";
 		txtApellidos->Text = ""; txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";
 		txtDNI->Select();
@@ -633,13 +653,34 @@ namespace ProjectFinal {
 		txtCodigo->Enabled = false;
 		txtDNI->Enabled = false;
 		txtNombre->Enabled = false;
+		txtApellidos->Enabled = false;
 		txtCelular->Enabled = false;
 		txtCorreo->Enabled = false;
 		dtpFecha->Enabled = false;
 		txtBuscar->Enabled = false;
+		groupBox2->Enabled = false;
+
 		txtCodigo->Text = ""; txtDNI->Text = "";	txtNombre->Text = "";
 		txtApellidos->Text = ""; txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";
 	}
+
+	private: void Modificar() {
+		opc = 2;
+		btnNuevo->Enabled = false;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = true;
+		btnCancelar->Enabled = true;
+		dgvLista->Enabled = false;
+		dtpFecha->Enabled = true;
+
+		txtCodigo->Enabled = true;
+		txtDNI->Enabled = true; txtNombre->Enabled = true; txtApellidos->Enabled = true;
+		txtCelular->Enabled = true; txtCorreo->Enabled = true;
+		txtBuscar->Enabled = true;
+		txtDNI->Select();
+	}
+
 	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
 		habilitar();
 	}
@@ -647,12 +688,126 @@ namespace ProjectFinal {
 		deshabilitar();
 	}
 	private: System::Void btnModificar_Click(System::Object^  sender, System::EventArgs^  e) {
-		habilitar();
+		Modificar();
 	}
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
-
+		Cliente client;
+		client.setCodigo(daoUsuario.StringToChar(txtCodigo->Text));
+		daoCliente.clienteProcesar(client, 3);
+		//MessageBox::Show("Eliminado");
+		deshabilitar();
+		listaClientes = daoCliente.consultar();
+		imprimir(listaClientes);
 	}
 	private: System::Void btnGrabar_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (txtDNI->Text->Equals("")) {
+			MessageBox::Show("Complete campo DNI");
+		}
+		else if (txtNombre->Text->Equals("")) {
+			MessageBox::Show("Complete campo nombre");
+		}
+		else if (txtApellidos->Text->Equals("")) {
+			MessageBox::Show("Complete campo apellidos");
+		}
+		else if (txtCelular->Text->Equals("")) {
+			MessageBox::Show("Complete campo celular");
+		}
+		else if (txtCorreo->Text->Equals("")) {
+			MessageBox::Show("Complete campo correo");
+		}
+		else {
+			Cliente client;
+			client.setCodigo(daoUsuario.StringToChar(txtCodigo->Text));
+
+			if (opc == 1) {
+				if (client.validar()) {
+					client.setDni(daoProducto.StringToChar(txtDNI->Text));
+					client.setNombre(daoProducto.StringToChar(txtNombre->Text));
+					client.setApellidos(daoProducto.StringToChar(txtApellidos->Text));
+
+					client.setTelefono(daoProducto.StringToChar(txtCelular->Text));
+					client.setEmail(daoProducto.StringToChar(txtCorreo->Text));
+
+					if (rbMasculino->Checked) {
+						client.setGenero("Masculino");
+					}
+					else if (rbFemenino->Checked) {
+						client.setGenero("Femenino");
+					}
+
+					DateTime f = dtpFecha->Value;
+					int dia = Convert::ToInt16(f.Day);
+					int mes = Convert::ToInt16(f.Month);
+					int anio = Convert::ToInt16(f.Year);
+					String ^fecha = anio + "-" + mes + "-" + dia;
+					client.setFecha(daoProducto.StringToChar(fecha));
+					daoCliente.clienteProcesar(client, 1);
+
+					//MessageBox::Show("Codigo valido");
+					/*listaClientes = daoCliente.consultar();
+					imprimir(listaClientes);*/
+				}
+				else {
+					MessageBox::Show("Codigo no valido");
+				}
+			}
+			else {
+				if (client.validar()) {
+					client.setDni(daoProducto.StringToChar(txtDNI->Text));
+					client.setNombre(daoProducto.StringToChar(txtNombre->Text));
+					client.setApellidos(daoProducto.StringToChar(txtApellidos->Text));
+
+					client.setTelefono(daoProducto.StringToChar(txtCelular->Text));
+					client.setEmail(daoProducto.StringToChar(txtCorreo->Text));
+					DateTime f = dtpFecha->Value;
+					int dia = Convert::ToInt16(f.Day);
+					int mes = Convert::ToInt16(f.Month);
+					int anio = Convert::ToInt16(f.Year);
+					String ^fecha = anio + "-" + mes + "-" + dia;
+					client.setFecha(daoProducto.StringToChar(fecha));
+					daoCliente.clienteProcesar(client, 2);
+					/*listaClientes = daoCliente.consultar();
+					imprimir(listaClientes);*/
+					//MessageBox::Show("Actualizado");
+				}
+				else {
+					MessageBox::Show("Codigo no valido");
+				}
+			}
+			deshabilitar();
+			listaClientes = daoCliente.consultar();
+			imprimir(listaClientes);
+		}
+	}
+
+	private: void imprimir(vector<Cliente> Ex) {
+		dgvLista->Rows->Clear();
+		for (int i = 0; i < (int)Ex.size(); i++) {
+			dgvLista->Rows->Add(gcnew String(Ex[i].getCodigo()),
+				gcnew String(Ex[i].getDni()),
+				gcnew String(Ex[i].getNombre()),
+				gcnew String(Ex[i].getApellidos()),
+				gcnew String(Ex[i].getTelefono()),
+				gcnew String(Ex[i].getEmail()),
+				gcnew String(Ex[i].getGenero()),
+				gcnew String(Ex[i].getFecha())
+			);
+		}
+	}
+	private: System::Void frmCliente_Load(System::Object^  sender, System::EventArgs^  e) {
+		listaClientes = daoCliente.consultar();
+		imprimir(listaClientes);
+	}
+	private: System::Void dgvLista_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		txtCodigo->Text = dgvLista->CurrentRow->Cells[0]->Value->ToString();
+		txtDNI->Text = dgvLista->CurrentRow->Cells[1]->Value->ToString();
+		txtNombre->Text = dgvLista->CurrentRow->Cells[2]->Value->ToString();
+		txtApellidos->Text = dgvLista->CurrentRow->Cells[3]->Value->ToString();
+		txtCelular->Text = dgvLista->CurrentRow->Cells[4]->Value->ToString();
+		txtCorreo->Text = dgvLista->CurrentRow->Cells[5]->Value->ToString();
+
+		btnModificar->Enabled = true;
+		btnEliminar->Enabled = true;
 	}
 	};
 }

@@ -60,11 +60,11 @@ vector<Usuario> UsuarioDAO::consultar() {
 			m = dr["pass"]->ToString();
 			usu.setPassWord(StringToChar(m));
 
-			m = dr["apellidos"]->ToString();
-			usu.setApellidos(StringToChar(m));
-
 			m = dr["nombre"]->ToString();
 			usu.setNombre(StringToChar(m));
+
+			m = dr["apellidos"]->ToString();
+			usu.setApellidos(StringToChar(m));
 
 			m = dr["telefono"]->ToString();
 			usu.setTelefono(StringToChar(m));
@@ -127,7 +127,7 @@ void UsuarioDAO::operator *=(Usuario obj) {//actualizar
 		command->CommandText =
 			"UPDATE empleados set dni = @dni, username = @username, pass = @pass,"
 			+ "nombre = @nombre, apellidos = @apellidos, telefono = @telefono,"
-			+ "email = @email, fechaNac = @fechaNac"
+			+ "email = @email, fechaNac = @fechaNac "
 			+ "where  codigo= @codigo";
 
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
@@ -158,7 +158,7 @@ void UsuarioDAO::operator -=(Usuario obj) {//eliminar
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"delete from empleados where username = @codigo";
+			"delete from empleados where codigo = @codigo";
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getUserName()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();

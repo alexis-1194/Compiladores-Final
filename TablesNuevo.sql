@@ -33,8 +33,11 @@ create table Clientes
 
 alter table Clientes add primary key(codigo);
 
-insert into Cliente
-values('CLI_00001', 'Alexis Suarez Alvarez', '975516965', 'alexis.sualv@gmail.com', 'Masculino', '2000-04-12')
+
+select  * from clientes
+insert into Clientes
+values('CLI_000001','13249875','Juan','Martinez Diaz', '975516965', 'Juan_13@gmail.com', 'Masculino', '1983-04-12')
+
 insert into Cliente
 values('48515524', 'Jonas Silva Meza', '985698458', 'jonasSilv@hotmail.com', 'Masculino', '1998-05-11')
 
@@ -51,19 +54,30 @@ create table proveedores
 
 alter table PROVEEDORES add primary key(codigo);
 
+insert into proveedores values('PROV_00001','Gerardo Torres','perifericos','COMPU S.A.C'
+,'Av. Petit Thouars 5356, Miraflores 15074','897123456');
+
 
 create table productos
 (
 	--id int identity(1,1), id numero autoincrementable
 	codigo varchar(10) not null,
-	nombre varchar(50),
+	nombre varchar(50),--descripcion
 	linea varchar(50) not null,
-	precio_compra numeric,
-	precio_venta numeric,
-	cantidad int,
+	precio_compra numeric not null,
+	precio_venta numeric not null,
+	cantidad int not null,
+	codigo_proveedor varchar(10) not null
 );
-
+--select * from productos
 alter table PRODUCTOS add primary key(codigo);
+
+alter table productos add foreign key(codigo_proveedor) references proveedores(codigo);
+
+insert into productos values('PROD_00001','Mouse Logitech B100','Mouse',45.50,56.40,
+15,'PROV_00001');
+
+
 
 create table boletas
 (

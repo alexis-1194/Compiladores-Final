@@ -6,7 +6,7 @@ public:
 
 	char* StringToChar(String ^m);
 
-	list<Producto> consultar();
+	vector<Producto> consultar();
 
 	void operator +=(Producto obj);//INSERTAR
 
@@ -37,8 +37,8 @@ char * ProductoDAO::StringToChar(String ^ m)
 }
 
 
-list<Producto> ProductoDAO::consultar() {
-	list<Producto> lista;
+vector<Producto> ProductoDAO::consultar() {
+	vector<Producto> lista;
 	SqlConnection ^cn = Conexion::getConnection();
 
 	SqlCommand ^command = gcnew SqlCommand("SELECT * FROM productos", cn);
@@ -53,14 +53,23 @@ list<Producto> ProductoDAO::consultar() {
 			m = dr["codigo"]->ToString();
 			pro.setCodigo(StringToChar(m));
 
-			m = dr["descripcion"]->ToString();
+			m = dr["nombre"]->ToString();
 			pro.setDescripcion(StringToChar(m));
+
+			m = dr["linea"]->ToString();
+			pro.setLinea(StringToChar(m));
+
+			m = dr["precio_compra"]->ToString();
+			pro.setPrecioCompra(Convert::ToDouble(m));
+
+			m = dr["precio_venta"]->ToString();
+			pro.setPrecioVenta(Convert::ToDouble(m));
 
 			m = dr["cantidad"]->ToString();
 			pro.setCantidad(Convert::ToInt32(m));
 
-			m = dr["precio"]->ToString();
-			pro.setPrecio(Convert::ToDouble(m));
+			m = dr["codigo_proveedor"]->ToString();
+			pro.setCodigoProveedor(StringToChar(m));
 
 			lista.push_back(pro);
 		}
@@ -83,11 +92,15 @@ void ProductoDAO::operator+=(Producto obj)
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"INSERT INTO productos values(@codigo, @desc, @cantidad, @precio)";
+			"INSERT INTO productos values(@codigo, @nombre, @linea, @precio_compra,"
+			+ "@precio_venta,@cantidad,@codigo_proveedor)";
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
-		command->Parameters->AddWithValue("@desc", gcnew String(obj.getDescripcion()));
+		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getDescripcion()));
+		command->Parameters->AddWithValue("@linea", gcnew String(obj.getLinea()));
+		command->Parameters->AddWithValue("@precio_compra", obj.getPrecioCompra());
+		command->Parameters->AddWithValue("@precio_venta", obj.getPrecioVenta());
 		command->Parameters->AddWithValue("@cantidad", obj.getCantidad());
-		command->Parameters->AddWithValue("@precio", obj.getPrecio());
+		command->Parameters->AddWithValue("@codigo_proveedor", gcnew String(obj.getCodigo()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Registrado");
@@ -106,11 +119,17 @@ void ProductoDAO::operator*=(Producto obj)
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"UPDATE productos set descripcion = @desc, cantidad = @cantidad, precio = @precio" +
-			"where codigo = @codigo";
-		command->Parameters->AddWithValue("@desc", gcnew String(obj.getDescripcion()));
+			"UPDATE productos set nombre = @nombre, linea = @linea,"
+			+ "precio_compra = @precio_compra, precio_venta = @precio_venta,"
+			+ "cantidad = @cantidad, codigo_proveedor= @codigo_proveedor "
+			+ "where codigo = @codigo";
+		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
+		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getDescripcion()));
+		command->Parameters->AddWithValue("@linea", gcnew String(obj.getLinea()));
+		command->Parameters->AddWithValue("@precio_compra", obj.getPrecioCompra());
+		command->Parameters->AddWithValue("@precio_venta", obj.getPrecioVenta());
 		command->Parameters->AddWithValue("@cantidad", obj.getCantidad());
-		command->Parameters->AddWithValue("@precio", obj.getPrecio());
+		command->Parameters->AddWithValue("@codigo_proveedor", gcnew String(obj.getCodigo()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Actualizado");
@@ -160,5 +179,5 @@ void ProductoDAO::productoProcesar(Producto obj, int opcion)
 	}
 }
 
-list<Producto> listaProducto;
+vector<Producto> listaProductos;
 ProductoDAO daoProducto;

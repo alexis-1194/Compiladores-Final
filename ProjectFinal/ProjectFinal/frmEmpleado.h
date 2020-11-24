@@ -275,6 +275,7 @@ namespace ProjectFinal {
 			this->dgvLista->Size = System::Drawing::Size(581, 199);
 			this->dgvLista->TabIndex = 100;
 			this->dgvLista->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmEmpleado::dgvLista_CellClick);
+			this->dgvLista->CellFormatting += gcnew System::Windows::Forms::DataGridViewCellFormattingEventHandler(this, &frmEmpleado::dgvLista_CellFormatting);
 			// 
 			// Column1
 			// 
@@ -634,8 +635,25 @@ namespace ProjectFinal {
 		txtUsu->Enabled = false; txtPass->Enabled = false;
 		txtBuscar->Enabled = false;
 		txtCodigo->Text = ""; txtDNI->Text = "";	txtNombre->Text = "";
-		txtApellidos->Text = "";
+		txtApellidos->Text = ""; txtUsu->Text = ""; txtPass->Text = "";
 		txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";
+	}
+
+	private: void Modificar() {
+		opc = 2;
+		btnNuevo->Enabled = false;
+		btnModificar->Enabled = false;
+		btnEliminar->Enabled = false;
+		btnGrabar->Enabled = true;
+		btnCancelar->Enabled = true;
+		dgvLista->Enabled = false;
+		dtpFecha->Enabled = true;
+
+		txtCodigo->Enabled = true;
+		txtDNI->Enabled = true; txtUsu->Enabled = true; txtPass->Enabled = true; txtNombre->Enabled = true;
+		txtApellidos->Enabled = true; txtCelular->Enabled = true; txtCorreo->Enabled = true;
+		txtBuscar->Enabled = true;
+		txtDNI->Select();
 	}
 
 	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -647,14 +665,14 @@ namespace ProjectFinal {
 	}
 
 	private: System::Void btnModificar_Click(System::Object^  sender, System::EventArgs^  e) {
-		habilitar();
+		Modificar();
 	}
 
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Usuario user;
 		user.setCodigo(daoUsuario.StringToChar(txtCodigo->Text));
 		daoUsuario.usuarioProcesar(user, 3);
-		MessageBox::Show("Eliminado");
+		//MessageBox::Show("Eliminado");
 		deshabilitar();
 		listaUsuarios = daoUsuario.consultar();
 		imprimir(listaUsuarios);
@@ -707,13 +725,13 @@ namespace ProjectFinal {
 					//MessageBox::Show("Codigo valido");
 					listaUsuarios = daoUsuario.consultar();
 					imprimir(listaUsuarios);
-					MessageBox::Show("Registrado");
+					//MessageBox::Show("Registrado");
 				}
 				else {
 					MessageBox::Show("Codigo no valido");
 				}
 			}
-			else {
+			else { //opc igual a 2
 				if (user.validar()) {
 					user.setDni(daoProducto.StringToChar(txtDNI->Text));
 					user.setUserName(daoProducto.StringToChar(txtUsu->Text));
@@ -732,12 +750,13 @@ namespace ProjectFinal {
 					daoUsuario.usuarioProcesar(user, 2);
 					listaUsuarios = daoUsuario.consultar();
 					imprimir(listaUsuarios);
-					MessageBox::Show("Actualizado");
+					//MessageBox::Show("Actualizado");
 				}
 				else {
 					MessageBox::Show("Codigo no valido");
 				}
 			}
+			deshabilitar();
 		}
 	}
 
@@ -773,6 +792,13 @@ namespace ProjectFinal {
 		txtCorreo->Text = dgvLista->CurrentRow->Cells[7]->Value->ToString();
 		btnModificar->Enabled = true;
 		btnEliminar->Enabled = true;
+	}
+	private: System::Void dgvLista_CellFormatting(System::Object^  sender, System::Windows::Forms::DataGridViewCellFormattingEventArgs^  e) {
+		if (e->ColumnIndex == 3) {
+			if (e->Value != nullptr) {
+				e->Value = gcnew String('*', e->Value->ToString()->Length);
+			}
+		}
 	}
 	};
 }
