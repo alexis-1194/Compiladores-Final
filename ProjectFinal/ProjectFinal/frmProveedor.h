@@ -502,8 +502,7 @@ namespace ProjectFinal {
 		btnCancelar->Enabled = true;
 		dgvLista->Enabled = false;
 
-
-		txtCodigo->Enabled = true;
+		//txtCodigo->Enabled = true;
 		txtNombre->Enabled = true; txtCategoria->Enabled = true;
 		txtEmpresa->Enabled = true; txtDireccion->Enabled = true;
 		txtTelefono->Enabled = true;
@@ -550,6 +549,7 @@ namespace ProjectFinal {
 	}
 	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
 		habilitar();
+		Codigo();
 	}
 	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
 		deshabilitar();
@@ -559,12 +559,42 @@ namespace ProjectFinal {
 	}
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Proveedor provider;
-		provider.setCodigo(daoProveedor.StringToChar(txtCodigo->Text));
+		provider.setCodigo(Global::StringToChar(txtCodigo->Text));
 		daoProveedor.proveedorProcesar(provider, 3);
 		//MessageBox::Show("Eliminado");
 		deshabilitar();
 		listaProveedores = daoProveedor.consultar();
 		imprimir(listaProveedores);
+	}
+
+	private: void Codigo() {
+		char cod[11]; int n = 0;
+		vector<Proveedor> lista = daoProveedor.consultar();
+		for (Proveedor pro : lista) {
+			strcpy_s(cod, pro.getCodigo());
+		}
+
+		char *replaceCod = Global::replaceFirst(cod, 'P', '0');
+		strcpy(replaceCod, Global::replaceFirst(cod, 'R', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, 'O', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, 'V', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+
+		n = Convert::ToInt32(replaceCod);
+		n++;
+		if (n < 10)
+			/*Se asigna un formato al codigo */
+			txtCodigo->Text = gcnew String("PROV_0000" + n);
+		else if (n < 100)
+			txtCodigo->Text = gcnew String("PROV_000" + n);
+		else if (n < 1000)
+			txtCodigo->Text = gcnew String("PROV_00" + n);
+		else if (n < 10000)
+			txtCodigo->Text = gcnew String("PROV_0" + n);
+		else if (n < 100000)
+			txtCodigo->Text = gcnew String("PROV_" + n);
+		else
+			MessageBox::Show("Supero el maximo de proveedores");
 	}
 	private: System::Void btnGrabar_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (txtNombre->Text->Equals("")) {
@@ -584,16 +614,16 @@ namespace ProjectFinal {
 		}
 		else {
 			Proveedor provider;
-			provider.setCodigo(daoUsuario.StringToChar(txtCodigo->Text));
+			provider.setCodigo(Global::StringToChar(txtCodigo->Text));
 
 			if (opc == 1) {
 				if (provider.validar()) {
-					provider.setNombreContacto(daoProducto.StringToChar(txtNombre->Text));
-					provider.setcategoria(daoProducto.StringToChar(txtCategoria->Text));
-					provider.setempresa(daoProducto.StringToChar(txtEmpresa->Text));
+					provider.setNombreContacto(Global::StringToChar(txtNombre->Text));
+					provider.setcategoria(Global::StringToChar(txtCategoria->Text));
+					provider.setempresa(Global::StringToChar(txtEmpresa->Text));
 
-					provider.setdireccion(daoProducto.StringToChar(txtDireccion->Text));
-					provider.settelefono(daoProducto.StringToChar(txtTelefono->Text));
+					provider.setdireccion(Global::StringToChar(txtDireccion->Text));
+					provider.settelefono(Global::StringToChar(txtTelefono->Text));
 
 
 					daoProveedor.proveedorProcesar(provider, 1);
@@ -608,12 +638,12 @@ namespace ProjectFinal {
 			}
 			else {
 				if (provider.validar()) {
-					provider.setNombreContacto(daoProducto.StringToChar(txtNombre->Text));
-					provider.setcategoria(daoProducto.StringToChar(txtCategoria->Text));
-					provider.setempresa(daoProducto.StringToChar(txtEmpresa->Text));
+					provider.setNombreContacto(Global::StringToChar(txtNombre->Text));
+					provider.setcategoria(Global::StringToChar(txtCategoria->Text));
+					provider.setempresa(Global::StringToChar(txtEmpresa->Text));
 
-					provider.setdireccion(daoProducto.StringToChar(txtDireccion->Text));
-					provider.settelefono(daoProducto.StringToChar(txtTelefono->Text));
+					provider.setdireccion(Global::StringToChar(txtDireccion->Text));
+					provider.settelefono(Global::StringToChar(txtTelefono->Text));
 
 					daoProveedor.proveedorProcesar(provider, 2);
 					/*listaClientes = daoCliente.consultar();

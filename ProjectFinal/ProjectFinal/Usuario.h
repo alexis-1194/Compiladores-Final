@@ -1,10 +1,10 @@
 //Empleado
+char empleadoActual[100]; //Global para utilizar en la vista Registrar venta
 class Usuario
 {
 public:
 	Usuario();
 	~Usuario();
-
 
 	void setCodigo(char *codigo);
 	void setDni(char *dni);
@@ -27,7 +27,7 @@ public:
 	char* getFecha();
 
 	bool validar();
-
+	
 private:
 	char codigo[11];
 	char dni[10];
@@ -39,6 +39,7 @@ private:
 	char email[50];
 	char fecha[50];
 	int q0, q1, q2, q3, q4, q9, error;
+	
 };
 
 Usuario::Usuario()

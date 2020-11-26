@@ -197,6 +197,10 @@ namespace ProjectFinal {
 					//Esconder ventana login
 					/*strcpy_s(usuarioActual, lista_empAux[i].nombre);*/
 					//Abrir ventana principal
+					//strcpy_s(empleadoActual, strcat(strcat(user.getNombre()," "),user.getApellidos()));
+
+					strcpy_s(empleadoActual, user.getCodigo());
+					//MessageBox::Show(gcnew String(empleadoActual));
 					frmPrincipal ^m = gcnew frmPrincipal();
 					m->StartPosition = FormStartPosition::CenterScreen;
 					m->Show();

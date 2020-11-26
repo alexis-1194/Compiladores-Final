@@ -37,11 +37,12 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::Panel^  panelContenedor;
 	protected:
 	private: System::Windows::Forms::Panel^  menuVertical;
-	private: System::Windows::Forms::Panel^  subMenu_Reportes;
+	private: System::Windows::Forms::Panel^  subMenuProcesar;
+
 	private: System::Windows::Forms::Button^  btnReporte_compras;
 	private: System::Windows::Forms::Button^  btnReporte_venta;
 	private: System::Windows::Forms::Button^  btnReportes;
-	private: System::Windows::Forms::Button^  btnComprar;
+
 	private: System::Windows::Forms::Button^  btnVender;
 	private: System::Windows::Forms::Button^  btnProductos;
 	private: System::Windows::Forms::Button^  btnEmpleados;
@@ -53,6 +54,10 @@ namespace ProjectFinal {
 	private: System::Windows::Forms::PictureBox^  ptrCerrar;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Panel^  subMenuRegistros;
+
+	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  button4;
 
 	private:
 		/// <summary>
@@ -71,12 +76,14 @@ namespace ProjectFinal {
 			this->panelContenedor = (gcnew System::Windows::Forms::Panel());
 			this->ptrRestaurar = (gcnew System::Windows::Forms::PictureBox());
 			this->menuVertical = (gcnew System::Windows::Forms::Panel());
+			this->subMenuRegistros = (gcnew System::Windows::Forms::Panel());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->subMenu_Reportes = (gcnew System::Windows::Forms::Panel());
+			this->subMenuProcesar = (gcnew System::Windows::Forms::Panel());
 			this->btnReporte_compras = (gcnew System::Windows::Forms::Button());
 			this->btnReporte_venta = (gcnew System::Windows::Forms::Button());
 			this->btnReportes = (gcnew System::Windows::Forms::Button());
-			this->btnComprar = (gcnew System::Windows::Forms::Button());
 			this->btnVender = (gcnew System::Windows::Forms::Button());
 			this->btnProductos = (gcnew System::Windows::Forms::Button());
 			this->btnEmpleados = (gcnew System::Windows::Forms::Button());
@@ -88,7 +95,8 @@ namespace ProjectFinal {
 			this->ptrCerrar = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrRestaurar))->BeginInit();
 			this->menuVertical->SuspendLayout();
-			this->subMenu_Reportes->SuspendLayout();
+			this->subMenuRegistros->SuspendLayout();
+			this->subMenuProcesar->SuspendLayout();
 			this->barraTitulo->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrMinimizar))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrMaximizar))->BeginInit();
@@ -101,7 +109,7 @@ namespace ProjectFinal {
 			this->panelContenedor->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panelContenedor->Location = System::Drawing::Point(220, 35);
 			this->panelContenedor->Name = L"panelContenedor";
-			this->panelContenedor->Size = System::Drawing::Size(561, 586);
+			this->panelContenedor->Size = System::Drawing::Size(561, 587);
 			this->panelContenedor->TabIndex = 4;
 			// 
 			// ptrRestaurar
@@ -120,10 +128,10 @@ namespace ProjectFinal {
 			// 
 			this->menuVertical->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->menuVertical->Controls->Add(this->subMenuRegistros);
 			this->menuVertical->Controls->Add(this->button2);
-			this->menuVertical->Controls->Add(this->subMenu_Reportes);
+			this->menuVertical->Controls->Add(this->subMenuProcesar);
 			this->menuVertical->Controls->Add(this->btnReportes);
-			this->menuVertical->Controls->Add(this->btnComprar);
 			this->menuVertical->Controls->Add(this->btnVender);
 			this->menuVertical->Controls->Add(this->btnProductos);
 			this->menuVertical->Controls->Add(this->btnEmpleados);
@@ -131,8 +139,60 @@ namespace ProjectFinal {
 			this->menuVertical->Dock = System::Windows::Forms::DockStyle::Left;
 			this->menuVertical->Location = System::Drawing::Point(0, 35);
 			this->menuVertical->Name = L"menuVertical";
-			this->menuVertical->Size = System::Drawing::Size(220, 586);
+			this->menuVertical->Size = System::Drawing::Size(220, 587);
 			this->menuVertical->TabIndex = 2;
+			// 
+			// subMenuRegistros
+			// 
+			this->subMenuRegistros->Controls->Add(this->button3);
+			this->subMenuRegistros->Controls->Add(this->button4);
+			this->subMenuRegistros->Location = System::Drawing::Point(47, 345);
+			this->subMenuRegistros->Name = L"subMenuRegistros";
+			this->subMenuRegistros->Size = System::Drawing::Size(176, 80);
+			this->subMenuRegistros->TabIndex = 8;
+			this->subMenuRegistros->Visible = false;
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(164)), static_cast<System::Int32>(static_cast<System::Byte>(9)),
+				static_cast<System::Int32>(static_cast<System::Byte>(9)));
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(104)), static_cast<System::Int32>(static_cast<System::Byte>(51)));
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button3->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->button3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button3.Image")));
+			this->button3->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button3->Location = System::Drawing::Point(3, 41);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(173, 32);
+			this->button3->TabIndex = 5;
+			this->button3->Text = L"Ingresos";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &frmPrincipal::button3_Click);
+			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(164)), static_cast<System::Int32>(static_cast<System::Byte>(9)),
+				static_cast<System::Int32>(static_cast<System::Byte>(9)));
+			this->button4->FlatAppearance->BorderSize = 0;
+			this->button4->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(104)), static_cast<System::Int32>(static_cast<System::Byte>(51)));
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button4->ForeColor = System::Drawing::SystemColors::ControlLightLight;
+			this->button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.Image")));
+			this->button4->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->button4->Location = System::Drawing::Point(3, 3);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(173, 32);
+			this->button4->TabIndex = 4;
+			this->button4->Text = L"Salidas";
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &frmPrincipal::button4_Click);
 			// 
 			// button2
 			// 
@@ -155,15 +215,15 @@ namespace ProjectFinal {
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &frmPrincipal::button2_Click);
 			// 
-			// subMenu_Reportes
+			// subMenuProcesar
 			// 
-			this->subMenu_Reportes->Controls->Add(this->btnReporte_compras);
-			this->subMenu_Reportes->Controls->Add(this->btnReporte_venta);
-			this->subMenu_Reportes->Location = System::Drawing::Point(44, 488);
-			this->subMenu_Reportes->Name = L"subMenu_Reportes";
-			this->subMenu_Reportes->Size = System::Drawing::Size(176, 80);
-			this->subMenu_Reportes->TabIndex = 6;
-			this->subMenu_Reportes->Visible = false;
+			this->subMenuProcesar->Controls->Add(this->btnReporte_compras);
+			this->subMenuProcesar->Controls->Add(this->btnReporte_venta);
+			this->subMenuProcesar->Location = System::Drawing::Point(44, 488);
+			this->subMenuProcesar->Name = L"subMenuProcesar";
+			this->subMenuProcesar->Size = System::Drawing::Size(176, 80);
+			this->subMenuProcesar->TabIndex = 6;
+			this->subMenuProcesar->Visible = false;
 			// 
 			// btnReporte_compras
 			// 
@@ -182,8 +242,9 @@ namespace ProjectFinal {
 			this->btnReporte_compras->Name = L"btnReporte_compras";
 			this->btnReporte_compras->Size = System::Drawing::Size(173, 32);
 			this->btnReporte_compras->TabIndex = 5;
-			this->btnReporte_compras->Text = L"Reporte ingresos";
+			this->btnReporte_compras->Text = L"Compra";
 			this->btnReporte_compras->UseVisualStyleBackColor = false;
+			this->btnReporte_compras->Click += gcnew System::EventHandler(this, &frmPrincipal::btnReporte_compras_Click);
 			// 
 			// btnReporte_venta
 			// 
@@ -202,8 +263,9 @@ namespace ProjectFinal {
 			this->btnReporte_venta->Name = L"btnReporte_venta";
 			this->btnReporte_venta->Size = System::Drawing::Size(173, 32);
 			this->btnReporte_venta->TabIndex = 4;
-			this->btnReporte_venta->Text = L"Reporte salidas";
+			this->btnReporte_venta->Text = L"Venta";
 			this->btnReporte_venta->UseVisualStyleBackColor = false;
+			this->btnReporte_venta->Click += gcnew System::EventHandler(this, &frmPrincipal::btnReporte_venta_Click);
 			// 
 			// btnReportes
 			// 
@@ -222,28 +284,9 @@ namespace ProjectFinal {
 			this->btnReportes->Name = L"btnReportes";
 			this->btnReportes->Size = System::Drawing::Size(208, 32);
 			this->btnReportes->TabIndex = 5;
-			this->btnReportes->Text = L"Reportes";
+			this->btnReportes->Text = L"Procesar";
 			this->btnReportes->UseVisualStyleBackColor = false;
-			// 
-			// btnComprar
-			// 
-			this->btnComprar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(164)), static_cast<System::Int32>(static_cast<System::Byte>(9)),
-				static_cast<System::Int32>(static_cast<System::Byte>(9)));
-			this->btnComprar->FlatAppearance->BorderSize = 0;
-			this->btnComprar->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(104)), static_cast<System::Int32>(static_cast<System::Byte>(51)));
-			this->btnComprar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnComprar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btnComprar->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->btnComprar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnComprar.Image")));
-			this->btnComprar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnComprar->Location = System::Drawing::Point(12, 376);
-			this->btnComprar->Name = L"btnComprar";
-			this->btnComprar->Size = System::Drawing::Size(208, 32);
-			this->btnComprar->TabIndex = 4;
-			this->btnComprar->Text = L"Ingresos";
-			this->btnComprar->UseVisualStyleBackColor = false;
+			this->btnReportes->Click += gcnew System::EventHandler(this, &frmPrincipal::btnReportes_Click);
 			// 
 			// btnVender
 			// 
@@ -262,8 +305,9 @@ namespace ProjectFinal {
 			this->btnVender->Name = L"btnVender";
 			this->btnVender->Size = System::Drawing::Size(208, 32);
 			this->btnVender->TabIndex = 3;
-			this->btnVender->Text = L"Salidas";
+			this->btnVender->Text = L"Consultar";
 			this->btnVender->UseVisualStyleBackColor = false;
+			this->btnVender->Click += gcnew System::EventHandler(this, &frmPrincipal::btnVender_Click);
 			// 
 			// btnProductos
 			// 
@@ -282,7 +326,7 @@ namespace ProjectFinal {
 			this->btnProductos->Name = L"btnProductos";
 			this->btnProductos->Size = System::Drawing::Size(208, 32);
 			this->btnProductos->TabIndex = 2;
-			this->btnProductos->Text = L"Productos";
+			this->btnProductos->Text = L"Almacen";
 			this->btnProductos->UseVisualStyleBackColor = false;
 			this->btnProductos->Click += gcnew System::EventHandler(this, &frmPrincipal::btnProductos_Click);
 			// 
@@ -399,7 +443,7 @@ namespace ProjectFinal {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(781, 621);
+			this->ClientSize = System::Drawing::Size(781, 622);
 			this->Controls->Add(this->panelContenedor);
 			this->Controls->Add(this->menuVertical);
 			this->Controls->Add(this->barraTitulo);
@@ -408,7 +452,8 @@ namespace ProjectFinal {
 			this->Text = L"frmPrincipal";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrRestaurar))->EndInit();
 			this->menuVertical->ResumeLayout(false);
-			this->subMenu_Reportes->ResumeLayout(false);
+			this->subMenuRegistros->ResumeLayout(false);
+			this->subMenuProcesar->ResumeLayout(false);
 			this->barraTitulo->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrMinimizar))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrMaximizar))->EndInit();
@@ -482,6 +527,30 @@ namespace ProjectFinal {
 	private: System::Void btnProductos_Click(System::Object^  sender, System::EventArgs^  e) {
 		cargarForm(gcnew frmProducto());
 
+	}
+	private: System::Void btnVender_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (subMenuRegistros->Visible == false) subMenuRegistros->Visible = true;
+		else subMenuRegistros->Visible = false;
+	}
+	private: System::Void btnReportes_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (subMenuProcesar->Visible == false) subMenuProcesar->Visible = true;
+		else subMenuProcesar->Visible = false;
+	}
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Registros salidas
+		cargarForm(gcnew frmRegistroSalidas);
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Registros ingresos
+		cargarForm(gcnew frmRegistroIngresos);
+	}
+	private: System::Void btnReporte_venta_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Procesar venta
+		cargarForm(gcnew frmRegistrarVenta);
+	}
+	private: System::Void btnReporte_compras_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Procesar compra
+		cargarForm(gcnew frmRegistrarCompra);
 	}
 	};
 }

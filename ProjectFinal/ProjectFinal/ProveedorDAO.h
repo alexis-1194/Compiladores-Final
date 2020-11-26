@@ -3,7 +3,7 @@ class ProveedorDAO
 public:
 	ProveedorDAO();
 	~ProveedorDAO();
-	
+
 	char* StringToChar(String ^m);
 
 	vector<Proveedor> consultar();
@@ -98,15 +98,19 @@ void ProveedorDAO::operator+=(Proveedor obj)
 		command->Parameters->AddWithValue("@empresa", gcnew String(obj.getEmpresa()));
 		command->Parameters->AddWithValue("@direccion", gcnew String(obj.getDireccion()));
 		command->Parameters->AddWithValue("@telefono", gcnew String(obj.getTelefono()));
-		
+
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Registrado");
 		cn->Close();
 	}
-	catch (Exception ^exs) {
-		MessageBox::Show(exs->Message);
+	catch (SqlException ^exs) {
+		cout << StringToChar(exs->Message) << endl;
+		MessageBox::Show("Clave o código ya existe");
 	}
+	/*catch (Exception ^exs) {
+		MessageBox::Show(exs->Message);
+	}*/
 }
 
 void ProveedorDAO::operator*=(Proveedor obj)
@@ -129,7 +133,7 @@ void ProveedorDAO::operator*=(Proveedor obj)
 		command->Parameters->AddWithValue("@empresa", gcnew String(obj.getEmpresa()));
 		command->Parameters->AddWithValue("@direccion", gcnew String(obj.getDireccion()));
 		command->Parameters->AddWithValue("@telefono", gcnew String(obj.getTelefono()));
-		
+
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Actualizado");

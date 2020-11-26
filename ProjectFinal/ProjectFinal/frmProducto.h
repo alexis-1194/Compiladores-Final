@@ -147,7 +147,6 @@ namespace ProjectFinal {
 			this->lblNombre = (gcnew System::Windows::Forms::Label());
 			this->lblDNI = (gcnew System::Windows::Forms::Label());
 			this->dgvLista = (gcnew System::Windows::Forms::DataGridView());
-			this->btnImprimir = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -155,6 +154,7 @@ namespace ProjectFinal {
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btnImprimir = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvLista))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -202,6 +202,10 @@ namespace ProjectFinal {
 			// 
 			this->cboLinea->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cboLinea->FormattingEnabled = true;
+			this->cboLinea->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
+				L"Mouse", L"Audifonos", L"Teclados", L"Mouse Pad",
+					L"Ethernet", L"Juegos"
+			});
 			this->cboLinea->Location = System::Drawing::Point(15, 162);
 			this->cboLinea->Name = L"cboLinea";
 			this->cboLinea->Size = System::Drawing::Size(219, 21);
@@ -440,19 +444,6 @@ namespace ProjectFinal {
 			this->dgvLista->TabIndex = 128;
 			this->dgvLista->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmProducto::dgvLista_CellClick);
 			// 
-			// btnImprimir
-			// 
-			this->btnImprimir->Enabled = false;
-			this->btnImprimir->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnImprimir->Location = System::Drawing::Point(242, 232);
-			this->btnImprimir->Name = L"btnImprimir";
-			this->btnImprimir->Size = System::Drawing::Size(75, 23);
-			this->btnImprimir->TabIndex = 150;
-			this->btnImprimir->Text = L"Imprimir";
-			this->btnImprimir->UseVisualStyleBackColor = true;
-			this->btnImprimir->Click += gcnew System::EventHandler(this, &frmProducto::btnImprimir_Click);
-			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"CODIGO";
@@ -501,6 +492,19 @@ namespace ProjectFinal {
 			this->Column7->Name = L"Column7";
 			this->Column7->ReadOnly = true;
 			this->Column7->Width = 171;
+			// 
+			// btnImprimir
+			// 
+			this->btnImprimir->Enabled = false;
+			this->btnImprimir->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnImprimir->Location = System::Drawing::Point(242, 232);
+			this->btnImprimir->Name = L"btnImprimir";
+			this->btnImprimir->Size = System::Drawing::Size(75, 23);
+			this->btnImprimir->TabIndex = 150;
+			this->btnImprimir->Text = L"Imprimir";
+			this->btnImprimir->UseVisualStyleBackColor = true;
+			this->btnImprimir->Click += gcnew System::EventHandler(this, &frmProducto::btnImprimir_Click);
 			// 
 			// frmProducto
 			// 
@@ -551,7 +555,7 @@ namespace ProjectFinal {
 		dgvLista->Enabled = false;
 
 
-		txtCodigo->Enabled = true;
+		//txtCodigo->Enabled = true;
 		cboLinea->Enabled = true; txtNombre->Enabled = true; txtPrecio_compra->Enabled = true;
 		txtPrecio_venta->Enabled = true; txtCantidad->Enabled = true; cboProveedor->Enabled = true;
 		txtBuscar->Enabled = true;
@@ -597,8 +601,17 @@ namespace ProjectFinal {
 		txtNombre->Select();
 	}
 
+	private: void cargarProveedores(vector<Proveedor> lista) {
+		lista = daoProveedor.consultar();
+		for (int i = 0 ; i < (int)lista.size(); i++) {
+			cboProveedor->Items->Add(gcnew String(lista[i].getCodigo()));
+		}
+	}
+
 	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
 		habilitar();
+		Codigo();
+		cargarProveedores(listaProveedores);
 	}
 	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
 		deshabilitar();
@@ -609,26 +622,22 @@ namespace ProjectFinal {
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	}
-	private: void subCadena(char * arr, int ini, int fin, char *x)
-	{
-		for (int i = ini + 1, j = 0; i < fin; i++, j++)
-		{
-			x[j] = arr[i];
-			x[j + 1] = 0;
-		}
-	}
+			 
 	private: void Codigo() {
-		char cod[11]; int n;
+		char cod[11]; int n = 0;
 		vector<Producto> lista = daoProducto.consultar();
 		for (Producto pro : lista) {
 			strcpy_s(cod, pro.getCodigo());
 		}
-		char codAux[11];
-		subCadena(cod, 0, 5, codAux);//00001
-		char completo[11];
-		strcpy_s(completo, '1' + codAux);//100001
-		n = Convert::ToInt32(completo);
-		n++;//incrementa en 1
+
+		char *replaceCod = Global::replaceFirst(cod, 'P', '0');
+		strcpy(replaceCod, Global::replaceFirst(cod, 'R', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, 'O', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, 'D', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+
+		n = Convert::ToInt32(replaceCod);
+		n++;
 		if (n < 10)
 			/*Se asigna un formato al codigo */
 			txtCodigo->Text = gcnew String("PROD_0000" + n);
@@ -636,6 +645,10 @@ namespace ProjectFinal {
 			txtCodigo->Text = gcnew String("PROD_000" + n);
 		else if (n < 1000)
 			txtCodigo->Text = gcnew String("PROD_00" + n);
+		else if (n < 10000)
+			txtCodigo->Text = gcnew String("PROD_0" + n);
+		else if (n < 100000)
+			txtCodigo->Text = gcnew String("PROD_" + n);
 		else
 			MessageBox::Show("Supero el maximo de productos");
 	}
@@ -665,15 +678,15 @@ namespace ProjectFinal {
 		else {
 			Producto pro;
 			//daoProducto = ProductodaoProducto();
-			pro.setCodigo(daoProducto.StringToChar(txtCodigo->Text));
+			pro.setCodigo(Global::StringToChar(txtCodigo->Text));
 			if (opc == 1) {
 				if (pro.validar()) {
-					pro.setDescripcion(daoProducto.StringToChar(txtNombre->Text));
-					pro.setLinea(daoProducto.StringToChar(cboLinea->SelectedItem->ToString()));
+					pro.setDescripcion(Global::StringToChar(txtNombre->Text));
+					pro.setLinea(Global::StringToChar(cboLinea->SelectedItem->ToString()));
 					pro.setPrecioCompra(Convert::ToDouble(txtPrecio_compra->Text));
 					pro.setPrecioVenta(Convert::ToDouble(txtPrecio_venta->Text));
 					pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
-					pro.setCodigoProveedor(daoProducto.StringToChar(cboProveedor->SelectedItem->ToString()));
+					pro.setCodigoProveedor(Global::StringToChar(cboProveedor->SelectedItem->ToString()));
 					daoProducto.productoProcesar(pro, 1);
 					//MessageBox::Show("Codigo valido");
 				}
@@ -683,12 +696,12 @@ namespace ProjectFinal {
 			}
 			else {
 				if (pro.validar()) {
-					pro.setDescripcion(daoProducto.StringToChar(txtNombre->Text));
-					pro.setLinea(daoProducto.StringToChar(cboLinea->SelectedItem->ToString()));
+					pro.setDescripcion(Global::StringToChar(txtNombre->Text));
+					pro.setLinea(Global::StringToChar(cboLinea->SelectedItem->ToString()));
 					pro.setPrecioCompra(Convert::ToDouble(txtPrecio_compra->Text));
 					pro.setPrecioVenta(Convert::ToDouble(txtPrecio_venta->Text));
 					pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
-					pro.setCodigoProveedor(daoProducto.StringToChar(cboProveedor->SelectedItem->ToString()));
+					pro.setCodigoProveedor(Global::StringToChar(cboProveedor->SelectedItem->ToString()));
 					daoProducto.productoProcesar(pro, 2);
 					//MessageBox::Show("Codigo valido");
 				}

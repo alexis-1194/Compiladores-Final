@@ -630,7 +630,7 @@ namespace ProjectFinal {
 		dgvLista->Enabled = false;
 		dtpFecha->Enabled = true;
 
-		txtCodigo->Enabled = true;
+		//txtCodigo->Enabled = true;
 		txtDNI->Enabled = true; txtNombre->Enabled = true; txtApellidos->Enabled = true;
 		txtCelular->Enabled = true; txtCorreo->Enabled = true;
 		txtBuscar->Enabled = true;
@@ -683,6 +683,7 @@ namespace ProjectFinal {
 
 	private: System::Void btnNuevo_Click(System::Object^  sender, System::EventArgs^  e) {
 		habilitar();
+		Codigo();
 	}
 	private: System::Void btnCancelar_Click(System::Object^  sender, System::EventArgs^  e) {
 		deshabilitar();
@@ -692,13 +693,49 @@ namespace ProjectFinal {
 	}
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Cliente client;
-		client.setCodigo(daoUsuario.StringToChar(txtCodigo->Text));
+		client.setCodigo(Global::StringToChar(txtCodigo->Text));
 		daoCliente.clienteProcesar(client, 3);
 		//MessageBox::Show("Eliminado");
 		deshabilitar();
 		listaClientes = daoCliente.consultar();
 		imprimir(listaClientes);
 	}
+
+	private: void Codigo() {
+		//CLI_000001
+		char cod[11]; int n = 0;
+
+		vector<Producto> lista = daoProducto.consultar();
+
+		for (Producto pro : lista) {
+			strcpy_s(cod, pro.getCodigo());
+		}
+
+		char *replaceCod = Global::replaceFirst(cod, 'C', '0');
+		strcpy(replaceCod, Global::replaceFirst(cod, 'L', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, 'I', '0'));
+		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+
+		n = Convert::ToInt32(replaceCod);
+		n++;
+
+		if (n < 10)
+			/*Se asigna un formato al codigo */
+			txtCodigo->Text = gcnew String("CLI_00000" + n);
+		else if (n < 100)
+			txtCodigo->Text = gcnew String("CLI_0000" + n);
+		else if (n < 1000)
+			txtCodigo->Text = gcnew String("CLI_000" + n);
+		else if (n < 10000)
+			txtCodigo->Text = gcnew String("CLI_00" + n);
+		else if (n < 100000)
+			txtCodigo->Text = gcnew String("CLI_0" + n);
+		else if (n < 1000000)
+			txtCodigo->Text = gcnew String("CLI_" + n);
+		else
+			MessageBox::Show("Supero el maximo de empleados");
+	}
+
 	private: System::Void btnGrabar_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (txtDNI->Text->Equals("")) {
 			MessageBox::Show("Complete campo DNI");
@@ -721,12 +758,12 @@ namespace ProjectFinal {
 
 			if (opc == 1) {
 				if (client.validar()) {
-					client.setDni(daoProducto.StringToChar(txtDNI->Text));
-					client.setNombre(daoProducto.StringToChar(txtNombre->Text));
-					client.setApellidos(daoProducto.StringToChar(txtApellidos->Text));
+					client.setDni(Global::StringToChar(txtDNI->Text));
+					client.setNombre(Global::StringToChar(txtNombre->Text));
+					client.setApellidos(Global::StringToChar(txtApellidos->Text));
 
-					client.setTelefono(daoProducto.StringToChar(txtCelular->Text));
-					client.setEmail(daoProducto.StringToChar(txtCorreo->Text));
+					client.setTelefono(Global::StringToChar(txtCelular->Text));
+					client.setEmail(Global::StringToChar(txtCorreo->Text));
 
 					if (rbMasculino->Checked) {
 						client.setGenero("Masculino");
@@ -740,7 +777,7 @@ namespace ProjectFinal {
 					int mes = Convert::ToInt16(f.Month);
 					int anio = Convert::ToInt16(f.Year);
 					String ^fecha = anio + "-" + mes + "-" + dia;
-					client.setFecha(daoProducto.StringToChar(fecha));
+					client.setFecha(Global::StringToChar(fecha));
 					daoCliente.clienteProcesar(client, 1);
 
 					//MessageBox::Show("Codigo valido");
@@ -753,18 +790,19 @@ namespace ProjectFinal {
 			}
 			else {
 				if (client.validar()) {
-					client.setDni(daoProducto.StringToChar(txtDNI->Text));
-					client.setNombre(daoProducto.StringToChar(txtNombre->Text));
-					client.setApellidos(daoProducto.StringToChar(txtApellidos->Text));
+					client.setDni(Global::StringToChar(txtDNI->Text));
+					client.setNombre(Global::StringToChar(txtNombre->Text));
+					client.setApellidos(Global::StringToChar(txtApellidos->Text));
 
-					client.setTelefono(daoProducto.StringToChar(txtCelular->Text));
-					client.setEmail(daoProducto.StringToChar(txtCorreo->Text));
+					client.setTelefono(Global::StringToChar(txtCelular->Text));
+					client.setEmail(Global::StringToChar(txtCorreo->Text));
 					DateTime f = dtpFecha->Value;
 					int dia = Convert::ToInt16(f.Day);
 					int mes = Convert::ToInt16(f.Month);
 					int anio = Convert::ToInt16(f.Year);
 					String ^fecha = anio + "-" + mes + "-" + dia;
-					client.setFecha(daoProducto.StringToChar(fecha));
+
+					client.setFecha(Global::StringToChar(fecha));
 					daoCliente.clienteProcesar(client, 2);
 					/*listaClientes = daoCliente.consultar();
 					imprimir(listaClientes);*/

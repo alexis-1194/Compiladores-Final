@@ -106,9 +106,14 @@ void ProductoDAO::operator+=(Producto obj)
 		MessageBox::Show("Registrado");
 		cn->Close();
 	}
-	catch (Exception ^exs) {
-		MessageBox::Show(exs->Message);
+	//Excepción personalizada -> Error de Llave única
+	catch (SqlException ^exs) {
+		cout << StringToChar(exs->Message) << endl;
+		MessageBox::Show("Clave o código ya existe");
 	}
+	/*catch (Exception ^exs) {
+		MessageBox::Show(exs->Message);
+	}*/
 }
 void ProductoDAO::operator*=(Producto obj)
 {

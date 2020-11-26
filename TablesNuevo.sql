@@ -10,11 +10,12 @@ create table Empleados
 	email varchar(200) not null,
 	fechaNac date,
 )
-
+select *
+from clientes;
 alter table Empleados add primary key(codigo);
 
 insert into Empleados
-values('EMP_000001', '55861234', 'manolito', 'jugador', 'Manuel','Lopez Obrador','987513245', 'manlidtoov@gmail.com', '1978-08-11')
+values('EMP_000001', '55861234', 'manolito', 'jugador', 'Manuel', 'Lopez Obrador', '987513245', 'manlidtoov@gmail.com', '1978-08-11')
 --insert into Empleados
 --values('EMP_000002', 'esther', 'diandra19', 'Esther Valle Diandra', '998698251', 'delVallue@gmail.com', '1995-12-25')
 
@@ -34,9 +35,10 @@ create table Clientes
 alter table Clientes add primary key(codigo);
 
 
-select  * from clientes
+select *
+from clientes
 insert into Clientes
-values('CLI_000001','13249875','Juan','Martinez Diaz', '975516965', 'Juan_13@gmail.com', 'Masculino', '1983-04-12')
+values('CLI_000001', '13249875', 'Juan', 'Martinez Diaz', '975516965', 'Juan_13@gmail.com', 'Masculino', '1983-04-12')
 
 insert into Cliente
 values('48515524', 'Jonas Silva Meza', '985698458', 'jonasSilv@hotmail.com', 'Masculino', '1998-05-11')
@@ -54,8 +56,9 @@ create table proveedores
 
 alter table PROVEEDORES add primary key(codigo);
 
-insert into proveedores values('PROV_00001','Gerardo Torres','perifericos','COMPU S.A.C'
-,'Av. Petit Thouars 5356, Miraflores 15074','897123456');
+insert into proveedores
+values('PROV_00001', 'Gerardo Torres', 'perifericos', 'COMPU S.A.C'
+, 'Av. Petit Thouars 5356, Miraflores 15074', '897123456');
 
 
 create table productos
@@ -74,10 +77,9 @@ alter table PRODUCTOS add primary key(codigo);
 
 alter table productos add foreign key(codigo_proveedor) references proveedores(codigo);
 
-insert into productos values('PROD_00001','Mouse Logitech B100','Mouse',45.50,56.40,
-15,'PROV_00001');
-
-
+insert into productos
+values('PROD_00001', 'Mouse Logitech B100', 'Mouse', 45.50, 56.40,
+		15, 'PROV_00001');
 
 create table boletas
 (
@@ -86,6 +88,11 @@ create table boletas
 );
 
 alter table Boletas add primary key(codigo);
+alter table boletas add unique(numero);
+
+insert into boletas
+values('B_00001', 'B02-0001393');
+
 
 create table facturas
 (
@@ -94,26 +101,31 @@ create table facturas
 );
 
 alter table facturas add primary key(codigo);
+alter table facturas add unique(numero);
+
+insert into boletas
+values('F_00001', 'F01-0000765');
+
 
 create table ventas
 (
 	codigo varchar(10) not null,
-	numero varchar(12) not null,
 	codigo_cliente varchar(10) not null,
 	codigo_empleado varchar(10) not null,
 	--factura o boleta
 	tipo_comprobante varchar(50) not null,
 	codigo_comprobante varchar(10) not null,
-	--subtotal
-	importe float not null,
-	igv float not null,
-	total float not null,
+
+	sub_total numeric not null,
+	igv numeric not null,
+	total numeric not null,
 	fecha date,
 );
 
 alter table ventas add primary key(codigo);
 alter table ventas add foreign key(codigo_cliente) references clientes(codigo);
 alter table ventas add foreign key(codigo_empleado) references empleados(codigo);
+
 
 create table compras
 (

@@ -9,19 +9,32 @@ using namespace System::Data::Sql;
 using namespace System::Data::SqlClient;
 using namespace std;
 
+
 #include "Conexion.h"
+//Utilidades
 #include "Constante.h"
+#include "Global.h"
 //Entidades
+#include "Factura.h"
+#include "Boleta.h"
+#include "Venta.h"
 #include "Producto.h"
 #include "Proveedor.h"
 #include "Cliente.h"
 #include "Usuario.h"
 //Dao
+#include "FacturaDAO.h"
+#include "BoletaDAO.h"
+#include "VentaDAO.h"
 #include "ProductoDAO.h"
 #include "ProveedorDAO.h"
 #include "ClienteDAO.h"
 #include "UsuarioDAO.h"
 //View
+#include "frmRegistrarCompra.h"
+#include "frmRegistrarVenta.h"
+#include "frmRegistroIngresos.h"
+#include "frmRegistroSalidas.h"
 #include "frmProducto.h"
 #include "frmProveedor.h"
 #include "frmEmpleado.h"

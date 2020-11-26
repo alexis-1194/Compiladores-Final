@@ -112,9 +112,13 @@ void UsuarioDAO::operator +=(Usuario obj) {//REGISTRAR
 		MessageBox::Show("Registrado");
 		cn->Close();
 	}
-	catch (Exception ^exs) {
-		MessageBox::Show(exs->Message);
+	catch (SqlException ^exs) {
+		cout << StringToChar(exs->Message) << endl;
+		MessageBox::Show("Clave o código ya existe");
 	}
+	/*catch (Exception ^exs) {
+		MessageBox::Show(exs->Message);
+	}*/
 }
 
 void UsuarioDAO::operator *=(Usuario obj) {//actualizar

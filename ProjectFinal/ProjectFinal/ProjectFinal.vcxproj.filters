@@ -20,6 +20,18 @@
     <ClCompile Include="frmProducto.cpp">
       <Filter>views</Filter>
     </ClCompile>
+    <ClCompile Include="frmRegistrarVenta.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistrarCompra.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistroSalidas.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegistroIngresos.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="views">
@@ -87,6 +99,39 @@
     <ClInclude Include="ProductoDAO.h">
       <Filter>DAO</Filter>
     </ClInclude>
+    <ClInclude Include="frmRegistrarVenta.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarCompra.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistroSalidas.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="frmRegistroIngresos.h">
+      <Filter>views</Filter>
+    </ClInclude>
+    <ClInclude Include="Venta.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="VentaDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="Boleta.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Factura.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="BoletaDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="FacturaDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmLogin.resx" />
@@ -95,5 +140,6 @@
     <EmbeddedResource Include="frmEmpleado.resx" />
     <EmbeddedResource Include="frmProducto.resx" />
     <EmbeddedResource Include="frmProveedor.resx" />
+    <EmbeddedResource Include="frmRegistrarVenta.resx" />
   </ItemGroup>
 </Project>

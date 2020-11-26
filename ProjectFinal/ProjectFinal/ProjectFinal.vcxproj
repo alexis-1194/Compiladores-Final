@@ -25,6 +25,10 @@
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmProducto.cpp" />
     <ClCompile Include="frmProveedor.cpp" />
+    <ClCompile Include="frmRegistrarCompra.cpp" />
+    <ClCompile Include="frmRegistrarVenta.cpp" />
+    <ClCompile Include="frmRegistroIngresos.cpp" />
+    <ClCompile Include="frmRegistroSalidas.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,10 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boleta.h" />
+    <ClInclude Include="BoletaDAO.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="ClienteDAO.h" />
     <ClInclude Include="Conexion.h" />
     <ClInclude Include="Constante.h" />
+    <ClInclude Include="Factura.h" />
+    <ClInclude Include="FacturaDAO.h" />
     <ClInclude Include="frmCliente.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -57,12 +65,27 @@
     <ClInclude Include="frmProveedor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmRegistrarCompra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistrarVenta.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistroIngresos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistroSalidas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Global.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProductoDAO.h" />
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="ProveedorDAO.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioDAO.h" />
+    <ClInclude Include="Venta.h" />
+    <ClInclude Include="VentaDAO.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmCliente.resx">
@@ -82,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedor.resx">
       <DependentUpon>frmProveedor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarVenta.resx">
+      <DependentUpon>frmRegistrarVenta.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Label="Globals">
