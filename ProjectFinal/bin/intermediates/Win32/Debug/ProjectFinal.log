@@ -1,9 +1,9 @@
 ﻿  frmLogin.cpp
-c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(630): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(632): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: vea la declaración de 'strcpy'
-c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(657): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(659): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: vea la declaración de 'strcpy'
-c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(684): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(686): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: vea la declaración de 'strcpy'
 c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmproducto.h(634): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: vea la declaración de 'strcpy'

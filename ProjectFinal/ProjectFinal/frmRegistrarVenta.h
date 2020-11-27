@@ -282,6 +282,7 @@ namespace ProjectFinal {
 			this->txtCantidad->Name = L"txtCantidad";
 			this->txtCantidad->Size = System::Drawing::Size(95, 20);
 			this->txtCantidad->TabIndex = 197;
+			this->txtCantidad->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &frmRegistrarVenta::txtCantidad_KeyUp);
 			// 
 			// txtPrecio
 			// 
@@ -349,7 +350,6 @@ namespace ProjectFinal {
 			// txtNumeroVenta
 			// 
 			this->txtNumeroVenta->BackColor = System::Drawing::Color::Silver;
-			this->txtNumeroVenta->Enabled = false;
 			this->txtNumeroVenta->Location = System::Drawing::Point(12, 342);
 			this->txtNumeroVenta->MaxLength = 40;
 			this->txtNumeroVenta->Name = L"txtNumeroVenta";
@@ -511,6 +511,7 @@ namespace ProjectFinal {
 			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvLista->Size = System::Drawing::Size(442, 462);
 			this->dgvLista->TabIndex = 180;
+			this->dgvLista->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmRegistrarVenta::dgvLista_CellClick);
 			// 
 			// Column1
 			// 
@@ -619,6 +620,7 @@ namespace ProjectFinal {
 			cboProducto->Items->Add(gcnew String(listaProductos[i].getDescripcion()));
 		}
 	}
+
 	private: void CodigoBoleta() {
 		char cod[11]; int n = 0;
 		vector<Boleta> lista = daoBoleta.consultar();
@@ -745,11 +747,8 @@ namespace ProjectFinal {
 		Producto aux;
 		aux.setCodigo(dato.getCodigo());
 		aux.setDescripcion(dato.getDescripcion());
-		aux.setLinea(dato.getLinea());
-		aux.setPrecioCompra(dato.getPrecioCompra());
 		aux.setPrecioVenta(dato.getPrecioVenta());
 		aux.setCantidad(dato.getCantidad());
-		aux.setCodigoProveedor(dato.getCodigoProveedor());
 		listaProdAux.push_back(aux);
 	}
 
@@ -805,7 +804,6 @@ namespace ProjectFinal {
 			pro.setDescripcion(Global::StringToChar(cboProducto->SelectedItem->ToString()));
 			pro.setPrecioVenta(Convert::ToDouble(txtPrecio->Text));
 			pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
-
 			agregarProductoAux(pro);
 			imprimir(listaProdAux);
 		}
@@ -830,42 +828,12 @@ namespace ProjectFinal {
 	}
 
 	private: static int acumCantidad = 0;
-			 /*Modifica el stock Prueba*/
-	//private: bool modificarStock(vector<Producto> lista, Producto dato) {
-	//	bool estado = false;
-	//	for (int i = 0; i < (int)lista.size(); i++) {
-	//		if (strcmp(lista[i].getCodigo(), dato.getCodigo()) == 0) {
-	//			//strcpy_s(codigoFila, lista[i].codigo);
-	//			//Cantidad mayor a Stock registrado
-	//			if (lista[i].getCantidad() < dato.getCantidad()) {
-	//				MessageBox::Show("Se ha superado el limite de productos "
-	//					+ "Codigo: " + gcnew String(lista[i].getCodigo()));
-	//				estado = false;
-	//			}
-	//			//Cantidad igual Stock registrado 
-	//			else if (lista[i].getCantidad() == dato.getCantidad()) {
-	//				MessageBox::Show("No quedan mas productos "
-	//					+ "Codigo: " + gcnew String(lista[i].getCodigo()));
-	//				lista[i].setCantidad(lista[i].getCantidad() - dato.getCantidad());
-	//				acumCantidad = lista[i].getCantidad();
-	//				bool estado = true;
-	//			}
-	//			//Cantidad menor a Stock registrado
-	//			else {
-	//				lista[i].setCantidad(lista[i].getCantidad() - dato.getCantidad());
-	//				acumCantidad = lista[i].getCantidad();
-	//				bool estado = true;
-	//			}
-	//		}
-	//	}
-	//	return estado;
-	//}
 
 	private: bool modificarStockPrueba(vector<Producto> listaOrigen) {
 		int ctaux = 0;
 		vector<Producto> lista(listaOrigen);
 		//vector<Producto> lista = daoProducto.consultar();
-		bool estado = false;
+		bool estado = true;
 		for (int i = 0; i < dgvLista->RowCount; i++) {
 			Producto datopro;
 			String ^m1;
@@ -884,8 +852,7 @@ namespace ProjectFinal {
 					if (lista[i].getCantidad() < datopro.getCantidad()) {
 						MessageBox::Show("Se ha superado el limite de productos "
 							+ "Codigo: " + gcnew String(lista[i].getCodigo()));
-						estado = false;
-						break;
+						return false;
 					}
 					//Cantidad igual Stock registrado 
 					else if (lista[i].getCantidad() == datopro.getCantidad()) {
@@ -913,8 +880,8 @@ namespace ProjectFinal {
 	}
 
 	private: void modifcarBD() {
-		int st = 0;
 
+		int st = 0;
 		for (int i = 0; i < dgvLista->RowCount; i++) {
 			Producto datopro;
 			datopro.setCodigo(Global::StringToChar(dgvLista->Rows[i]->Cells[0]->Value->ToString()));
@@ -939,6 +906,7 @@ namespace ProjectFinal {
 				MessageBox::Show(exs->Message);
 			}
 		}
+
 	}
 
 	private: System::Void btnRegistrar_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -977,6 +945,7 @@ namespace ProjectFinal {
 			int anio = Convert::ToInt32(f.Year);
 
 			String ^fecha = anio + "-" + mes + "-" + dia;
+
 			dato.setFecha(Global::StringToChar(fecha));
 
 			vector<Producto> listaAux = daoProducto.consultar();
@@ -988,6 +957,7 @@ namespace ProjectFinal {
 				Boleta bo;
 				Factura fa;
 
+
 				if (tipoDoc == 1) {
 					bo.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
 					bo.setNumero("B879-9789");
@@ -996,10 +966,69 @@ namespace ProjectFinal {
 				else {
 					fa.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
 					fa.setNumero("F879-9789");
-					daoBoleta.boletaProcesar(bo, 1);
+					daoFactura.facturaProcesar(fa, 1);
 				}
-				
+				daoVenta.ventaProcesar(dato, 1);
+				for (int i = 0; i < dgvLista->RowCount; i++) {
+					Detalle datoPro;
+
+					datoPro.setCodigo(Global::StringToChar(dgvLista->Rows[i]->Cells[0]->Value->ToString()));
+					datoPro.setDescripcion(Global::StringToChar(dgvLista->Rows[i]->Cells[1]->Value->ToString()));
+					datoPro.setPrecio(Convert::ToDouble(dgvLista->Rows[i]->Cells[2]->Value));
+					datoPro.setCantidad(Convert::ToInt32(dgvLista->Rows[i]->Cells[3]->Value));
+					datoPro.setSubTotal(Convert::ToDouble(dgvLista->Rows[i]->Cells[4]->Value));
+					datoPro.setCodigoVenta(dato.getCodigo());
+
+					daoDetalle.procesarDetalle(datoPro,1);
+
+				}
+
 			}
+
+			/*cboCliente->SelectedIndex = -1, cboTipoDoc->SelectedIndex = -1,
+				cboProducto->SelectedIndex = -1, txtCantidad->Text = "",
+				txtCodigo->Text = "", txtPrecio->Text = "",*/
+
+				/*cboCliente->Text = ""; cboTipoDoc->Text = "";
+				cboProducto->Text = "";*/
+			txtCantidad->Text = "";
+			txtCodigo->Text = "", txtPrecio->Text = "",
+				txtSUBTOTAL->Text = "", txtIGV->Text = "", txtTOTAL->Text = "",
+				dgvLista->Rows->Clear();
+
+			Codigo();
+		}
+	}
+
+	private: System::Void dgvLista_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		txtCodigo->Text = dgvLista->CurrentRow->Cells[0]->Value->ToString();
+		cboProducto->SelectedItem = dgvLista->CurrentRow->Cells[1]->Value->ToString();
+		txtPrecio->Text = dgvLista->CurrentRow->Cells[2]->Value->ToString();
+		txtCantidad->Text = dgvLista->CurrentRow->Cells[3]->Value->ToString();
+		txtStock->Text = dgvLista->CurrentRow->Cells[3]->Value->ToString();
+	}
+
+	private: bool compararStock(vector<Producto> lista, Producto dato) {
+		bool estado = true;
+		for (int i = 0; i < (int)lista.size(); i++) {
+			if (strcmp(lista[i].getCodigo(), dato.getCodigo()) == 0) {
+				if (lista[i].getCantidad() < dato.getCantidad()) {
+					MessageBox::Show("Solo quedan: " + lista[i].getCantidad()
+						+ " en stock");
+					txtCantidad->Text = "1";
+					return false;
+				}
+			}
+		}
+		return estado;
+	}
+
+	private: System::Void txtCantidad_KeyUp(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+		Producto dato;
+		dato.setCodigo(Global::StringToChar(txtCodigo->Text));
+		if (!txtCantidad->Text->Trim()->Equals("")) {
+			dato.setCantidad(Convert::ToInt32(txtCantidad->Text->Trim()));
+			compararStock(listaProductos, dato);
 		}
 	}
 	};

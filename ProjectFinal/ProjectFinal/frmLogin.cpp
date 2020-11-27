@@ -15,6 +15,7 @@ using namespace std;
 #include "Constante.h"
 #include "Global.h"
 //Entidades
+#include "Detalle.h"
 #include "Factura.h"
 #include "Boleta.h"
 #include "Venta.h"
@@ -23,6 +24,7 @@ using namespace std;
 #include "Cliente.h"
 #include "Usuario.h"
 //Dao
+#include "DetalleDAO.h"
 #include "FacturaDAO.h"
 #include "BoletaDAO.h"
 #include "VentaDAO.h"
@@ -31,6 +33,7 @@ using namespace std;
 #include "ClienteDAO.h"
 #include "UsuarioDAO.h"
 //View
+#include "frmDetalle.h"
 #include "frmRegistrarCompra.h"
 #include "frmRegistrarVenta.h"
 #include "frmRegistroIngresos.h"

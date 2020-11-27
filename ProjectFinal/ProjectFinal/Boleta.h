@@ -44,7 +44,7 @@ bool Boleta::validar()
 {
 	char cadena[11];
 	strcpy_s(cadena, this->getCodigo());
-	if (strlen(cadena) == 6) {
+	if (strlen(cadena) == 7) {
 		int estado = q0;
 		for (int i = 0; i < (int)strlen(cadena); i++)
 		{

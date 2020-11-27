@@ -31,8 +31,6 @@ char * Global::StringToChar(String ^m)
 	return aux2;
 }
 
-
-
 char* Global::replace(char* str, char buscar, char r) {
 	char *actualPos = strchr(str, buscar);
 	while (actualPos) {

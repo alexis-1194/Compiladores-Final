@@ -32,6 +32,9 @@
     <ClCompile Include="frmRegistroIngresos.cpp">
       <Filter>views</Filter>
     </ClCompile>
+    <ClCompile Include="frmDetalle.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="views">
@@ -132,6 +135,15 @@
     <ClInclude Include="Global.h">
       <Filter>Util</Filter>
     </ClInclude>
+    <ClInclude Include="Detalle.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="DetalleDAO.h">
+      <Filter>DAO</Filter>
+    </ClInclude>
+    <ClInclude Include="frmDetalle.h">
+      <Filter>views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmLogin.resx" />
@@ -141,5 +153,6 @@
     <EmbeddedResource Include="frmProducto.resx" />
     <EmbeddedResource Include="frmProveedor.resx" />
     <EmbeddedResource Include="frmRegistrarVenta.resx" />
+    <EmbeddedResource Include="frmRegistroSalidas.resx" />
   </ItemGroup>
 </Project>

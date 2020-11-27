@@ -79,7 +79,7 @@ vector<Usuario> UsuarioDAO::consultar() {
 		}
 		dr->Close();
 	}
-	catch (Exception ^exs) {
+	catch (SqlException ^exs) {
 		MessageBox::Show(exs->Message);
 	}
 	cn->Close();

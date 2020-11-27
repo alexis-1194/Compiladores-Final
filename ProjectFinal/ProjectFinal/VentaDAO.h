@@ -8,13 +8,15 @@ public:
 
 	vector<Venta> consultar();
 
+	vector<Venta> consultarPorFecha(DateTime fecha);
+
 	void operator +=(Venta obj);//INSERTAR
 
 	void operator *=(Venta obj);//ACTUALIZAR
 
 	void operator -=(Venta obj);//ELIMINAR
 
-	void usuarioProcesar(Venta obj, int opcion);
+	void ventaProcesar(Venta obj, int opcion);
 
 private:
 
@@ -89,8 +91,63 @@ vector<Venta> VentaDAO::consultar()
 	return lista;
 }
 
+vector<Venta> VentaDAO::consultarPorFecha(DateTime fecha) {
+	vector<Venta> lista;
+	SqlConnection ^cn = Conexion::getConnection();
+	try {
+		SqlCommand ^command = gcnew SqlCommand("select * from ventas where fecha = @fecha", cn);
+		cn->Open();
+		SqlDataReader ^dr = command->ExecuteReader();
+
+		while (dr->Read() == true) {
+
+			String ^m;
+			Venta usu;
+
+			command->Parameters->AddWithValue("@fecha", fecha);
+
+			m = dr["codigo"]->ToString();
+			usu.setCodigo(StringToChar(m));
+
+			m = dr["codigo_cliente"]->ToString();
+			usu.setCliente(StringToChar(m));
+
+			m = dr["codigo_empleado"]->ToString();
+			usu.setEmpleado(StringToChar(m));
+
+			m = dr["tipo_comprobante"]->ToString();
+			usu.setTipoComprobante(StringToChar(m));
+
+			m = dr["codigo_comprobante"]->ToString();
+			usu.setCodigoComprobante(StringToChar(m));
+
+			m = dr["sub_total"]->ToString();
+			usu.setSubTotal(Convert::ToDouble(m));
+
+			m = dr["igv"]->ToString();
+			usu.setIgv(Convert::ToDouble(m));
+
+			m = dr["total"]->ToString();
+			usu.setTotal(Convert::ToDouble(m));
+
+			m = dr["fecha"]->ToString();
+			usu.setFecha(StringToChar(m));
+
+			lista.push_back(usu);
+		}
+		dr->Close();
+	}
+	catch (Exception ^exs) {
+		MessageBox::Show(exs->Message);
+	}
+	cn->Close();
+
+	return lista;
+}
+
 void VentaDAO::operator+=(Venta obj)
 {
+
 	try {
 		SqlConnection ^cn = Conexion::getConnection();
 		cn->Open();
@@ -98,7 +155,7 @@ void VentaDAO::operator+=(Venta obj)
 		command->Connection = cn;
 		// Crear la consulta sql
 		command->CommandText =
-			"INSERT INTO empleados ventas(@codigo,@codigo_cliente,@codigo_empleado,"
+			"INSERT INTO ventas values(@codigo,@codigo_cliente,@codigo_empleado,"
 			+ "@tipo_comprobante,@codigo_comprobante,@sub_total,@igv,@total,@fecha)";
 
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
@@ -117,10 +174,11 @@ void VentaDAO::operator+=(Venta obj)
 	}
 	catch (SqlException ^exs) {
 		cout << StringToChar(exs->Message) << endl;
-		MessageBox::Show("Clave o código ya existe");
+		MessageBox::Show(exs->Message);
+		//MessageBox::Show("Clave o código ya existe");
 	}
 	/*catch (Exception ^exs) {
-		MessageBox::Show(exs->Message);
+
 	}*/
 }
 
@@ -179,7 +237,7 @@ void VentaDAO::operator-=(Venta obj)
 	}
 }
 
-void VentaDAO::usuarioProcesar(Venta obj, int opcion)
+void VentaDAO::ventaProcesar(Venta obj, int opcion)
 {
 	switch (opcion)
 	{

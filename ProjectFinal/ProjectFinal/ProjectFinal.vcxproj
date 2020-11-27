@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frmCliente.cpp" />
+    <ClCompile Include="frmDetalle.cpp" />
     <ClCompile Include="frmEmpleado.cpp" />
     <ClCompile Include="frmLogin.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
@@ -45,9 +46,14 @@
     <ClInclude Include="ClienteDAO.h" />
     <ClInclude Include="Conexion.h" />
     <ClInclude Include="Constante.h" />
+    <ClInclude Include="Detalle.h" />
+    <ClInclude Include="DetalleDAO.h" />
     <ClInclude Include="Factura.h" />
     <ClInclude Include="FacturaDAO.h" />
     <ClInclude Include="frmCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmDetalle.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEmpleado.h">
@@ -91,6 +97,9 @@
     <EmbeddedResource Include="frmCliente.resx">
       <DependentUpon>frmCliente.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalle.resx">
+      <DependentUpon>frmDetalle.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleado.resx">
       <DependentUpon>frmEmpleado.h</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistrarVenta.resx">
       <DependentUpon>frmRegistrarVenta.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroSalidas.resx">
+      <DependentUpon>frmRegistroSalidas.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Label="Globals">

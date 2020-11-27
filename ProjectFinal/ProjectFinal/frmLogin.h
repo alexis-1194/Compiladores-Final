@@ -170,6 +170,7 @@ namespace ProjectFinal {
 			this->Name = L"frmLogin";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"frmLogin";
+			this->Load += gcnew System::EventHandler(this, &frmLogin::frmLogin_Load);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &frmLogin::frmLogin_MouseMove);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrMinimizar))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ptrCerrar))->EndInit();
@@ -234,6 +235,23 @@ namespace ProjectFinal {
 	}
 	private: System::Void frmLogin_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		accionMoverVentana(e);
+	}
+	private: void conectar_BD() {
+		try
+		{
+			SqlConnection ^cn = Conexion::getConnection();
+			if (cn) {
+				MessageBox::Show("Conectado");
+			}
+		}
+		catch (SqlException ^ex)
+		{
+			MessageBox::Show(ex->Message);
+		}
+	}
+
+	private: System::Void frmLogin_Load(System::Object^  sender, System::EventArgs^  e) {
+		conectar_BD();
 	}
 	};
 }

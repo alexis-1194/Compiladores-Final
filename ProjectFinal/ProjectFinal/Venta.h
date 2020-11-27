@@ -105,7 +105,7 @@ double Venta::getTotal() {
 	return this->total;
 }
 char* Venta::getFecha() {
-	return this->codigo;
+	return this->fecha;
 }
 
 bool Venta::validar() {
