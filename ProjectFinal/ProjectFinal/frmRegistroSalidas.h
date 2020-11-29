@@ -234,6 +234,7 @@ namespace ProjectFinal {
 			this->dtpFecha->Name = L"dtpFecha";
 			this->dtpFecha->Size = System::Drawing::Size(98, 20);
 			this->dtpFecha->TabIndex = 129;
+			this->dtpFecha->ValueChanged += gcnew System::EventHandler(this, &frmRegistroSalidas::dtpFecha_ValueChanged);
 			// 
 			// frmRegistroSalidas
 			// 
@@ -269,20 +270,16 @@ namespace ProjectFinal {
 	}
 
 	private: System::Void frmRegistroSalidas_Load(System::Object^  sender, System::EventArgs^  e) {
-		listaVentas = daoVenta.consultar();
-		imprimir(listaVentas);
+		/*listaVentas = daoVenta.consultar();
+		imprimir(listaVentas);*/
 	}
 	private: System::Void dgvLista_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		if (e->ColumnIndex == 0) {
 			/*cargarForm(gcnew frmDetalle());*/
 			//idDetalle = Convert::ToInt32(dgvLista->Columns[e->ColumnIndex]->Name->ToString());
 
-			//idDetalle = Convert::ToInt32(dgvLista->CurrentRow->Cells[0]->Value);
-
-
+			codDetalle = Global::StringToChar(dgvLista->CurrentRow->Cells[0]->Value->ToString());
 			frmDetalle ^m = gcnew frmDetalle();
-
-
 			m->TopLevel = false;
 			m->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Controls->Add(m);
@@ -292,6 +289,18 @@ namespace ProjectFinal {
 
 			m->Show();
 		}
+	}
+	private: System::Void dtpFecha_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
+
+		DateTime f = dtpFecha->Value;
+		int dia = Convert::ToInt32(f.Day);
+		int mes = Convert::ToInt32(f.Month);
+		int anio = Convert::ToInt32(f.Year);
+
+		String ^fecha = anio + "-" + mes + "-" + dia;
+
+		listaVentas = daoVenta.consultarPorFecha(Global::StringToChar(fecha));
+		imprimir(listaVentas);
 	}
 	};
 }

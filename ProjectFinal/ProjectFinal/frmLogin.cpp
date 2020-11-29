@@ -2,13 +2,13 @@
 #include <string.h>
 #include <vector>
 #include <list>
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::Runtime::InteropServices;
 using namespace System::Data::Sql;
 using namespace System::Data::SqlClient;
 using namespace std;
-
 
 #include "Conexion.h"
 //Utilidades

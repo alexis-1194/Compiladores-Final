@@ -1,6 +1,7 @@
 #pragma once
 vector<Producto> listaProdAux;
 int cantTotal = 0;
+
 namespace ProjectFinal {
 
 	using namespace System;
@@ -631,8 +632,9 @@ namespace ProjectFinal {
 		char *replaceCod = Global::replaceFirst(cod, 'B', '0');
 		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = Convert::ToInt32(replaceCod);
+		n = atoi(replaceCod);
 		n++;
+
 		if (n < 10)
 			/*Se asigna un formato al codigo */
 			txtNumeroDoc->Text = gcnew String("B_0000" + n);
@@ -648,7 +650,7 @@ namespace ProjectFinal {
 			MessageBox::Show("Supero el maximo de boletas");
 	}
 
-	private: void CodigoFactura() {
+	private: void CodigoFactura() {//F_000001
 		char cod[11]; int n = 0;
 		vector<Factura> lista = daoFactura.consultar();
 		for (Factura pro : lista) {
@@ -658,8 +660,9 @@ namespace ProjectFinal {
 		char *replaceCod = Global::replaceFirst(cod, 'F', '0');
 		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = Convert::ToInt32(replaceCod);
+		n = atoi(replaceCod);
 		n++;
+
 		if (n < 10)
 			/*Se asigna un formato al codigo */
 			txtNumeroDoc->Text = gcnew String("F_0000" + n);
@@ -685,7 +688,7 @@ namespace ProjectFinal {
 		char *replaceCod = Global::replaceFirst(cod, 'V', '0');
 		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = Convert::ToInt32(replaceCod);
+		n = atoi(replaceCod);
 		n++;
 		if (n < 10)
 			/*Se asigna un formato al codigo */
@@ -701,7 +704,10 @@ namespace ProjectFinal {
 		else
 			MessageBox::Show("Supero el maximo de facturas");
 	}
+
+
 	private: static String^ codigo_Cliente;//campo a guardar en la tabla venta
+
 	private: System::Void cboCliente_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		cCliente = cboCliente->SelectedIndex + 1;
@@ -739,19 +745,21 @@ namespace ProjectFinal {
 		//Codigo();/*venta*/
 		//listaClientes = daoCliente.consultar(); //Para utilizar en el ComboBox de clientes
 		//listaProductos = daoProducto.consultar();//Para utilizar en el ComboBox de productos
-		cargarCliente();
+		cargarCliente();//combobox cliente
 		cargarProducto();
 	}
-
+			 //Agregar detalle producto
 	private: void agregarProductoAux(Producto dato) {
+
 		Producto aux;
 		aux.setCodigo(dato.getCodigo());
 		aux.setDescripcion(dato.getDescripcion());
 		aux.setPrecioVenta(dato.getPrecioVenta());
 		aux.setCantidad(dato.getCantidad());
+
 		listaProdAux.push_back(aux);
 	}
-
+			 //Quitar detalle producto
 	private: void eliminarProductoAux(Producto dato) {
 		for (int i = 0; i < (int)listaProdAux.size(); i++) {
 			if (strcmp(listaProdAux[i].getCodigo(), dato.getCodigo()) == 0) {
@@ -777,7 +785,7 @@ namespace ProjectFinal {
 			igv = 0.18*SubTotal;
 			tot = SubTotal + igv;
 		}
-
+		//
 		txtSUBTOTAL->Text = Convert::ToString(SubTotal);
 		txtIGV->Text = Convert::ToString(igv);
 		txtTOTAL->Text = Convert::ToString(tot);
@@ -805,7 +813,7 @@ namespace ProjectFinal {
 			pro.setPrecioVenta(Convert::ToDouble(txtPrecio->Text));
 			pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
 			agregarProductoAux(pro);
-			imprimir(listaProdAux);
+			imprimir(listaProdAux);//dataGrid
 		}
 	}
 	private: System::Void btnQuitar_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -821,6 +829,7 @@ namespace ProjectFinal {
 			pro.setCodigo(Global::StringToChar(txtCodigo->Text));
 			eliminarProductoAux(pro);
 			imprimir(listaProdAux);
+
 			txtCodigo->Text = "";
 			txtPrecio->Text = "";
 			txtCantidad->Text = "";
@@ -846,14 +855,17 @@ namespace ProjectFinal {
 
 			/*bool estado = false;*/
 			for (int i = 0; i < (int)lista.size(); i++) {
+
 				if (strcmp(lista[i].getCodigo(), datopro.getCodigo()) == 0) {
 
 					//Cantidad mayor a Stock registrado
+
 					if (lista[i].getCantidad() < datopro.getCantidad()) {
 						MessageBox::Show("Se ha superado el limite de productos "
 							+ "Codigo: " + gcnew String(lista[i].getCodigo()));
 						return false;
 					}
+
 					//Cantidad igual Stock registrado 
 					else if (lista[i].getCantidad() == datopro.getCantidad()) {
 						MessageBox::Show("Se agotaron los productos "
@@ -862,6 +874,7 @@ namespace ProjectFinal {
 						acumCantidad = lista[i].getCantidad();
 						bool estado = true;
 					}
+
 					//Cantidad menor a Stock registrado
 					else {
 						lista[i].setCantidad(lista[i].getCantidad() - datopro.getCantidad());
@@ -875,7 +888,6 @@ namespace ProjectFinal {
 				MessageBox::Show("Verifique Stock de productos");
 			}
 		}
-
 		return estado;
 	}
 
@@ -890,6 +902,7 @@ namespace ProjectFinal {
 			datopro.setCantidad(st);
 			/*Actualizar tabla producto*/
 			try {
+
 				SqlConnection ^cn = Conexion::getConnection();
 				cn->Open();
 				SqlCommand ^command = gcnew SqlCommand();
@@ -901,7 +914,9 @@ namespace ProjectFinal {
 				command->Parameters->AddWithValue("@cantidad", acumCantidad);
 				command->ExecuteNonQuery();
 				cn->Close();
+
 			}
+
 			catch (Exception ^exs) {
 				MessageBox::Show(exs->Message);
 			}
@@ -948,26 +963,28 @@ namespace ProjectFinal {
 
 			dato.setFecha(Global::StringToChar(fecha));
 
+
+			//Trae la lista original
 			vector<Producto> listaAux = daoProducto.consultar();
 
 			bool estado = modificarStockPrueba(listaAux);//se ejececuta modificar prueba
 
 			if (estado) {
-				modifcarBD();
+				modifcarBD();//modificando la base de datos
 				Boleta bo;
 				Factura fa;
 
-
-				if (tipoDoc == 1) {
+				if (tipoDoc == 1) {//boleta -> codigo boleta
 					bo.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
 					bo.setNumero("B879-9789");
 					daoBoleta.boletaProcesar(bo, 1);
 				}
-				else {
+				else {//factura -> codigo boleta
 					fa.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
 					fa.setNumero("F879-9789");
 					daoFactura.facturaProcesar(fa, 1);
 				}
+
 				daoVenta.ventaProcesar(dato, 1);
 				for (int i = 0; i < dgvLista->RowCount; i++) {
 					Detalle datoPro;
@@ -979,10 +996,9 @@ namespace ProjectFinal {
 					datoPro.setSubTotal(Convert::ToDouble(dgvLista->Rows[i]->Cells[4]->Value));
 					datoPro.setCodigoVenta(dato.getCodigo());
 
-					daoDetalle.procesarDetalle(datoPro,1);
+					daoDetalle.procesarDetalle(datoPro, 1);
 
 				}
-
 			}
 
 			/*cboCliente->SelectedIndex = -1, cboTipoDoc->SelectedIndex = -1,

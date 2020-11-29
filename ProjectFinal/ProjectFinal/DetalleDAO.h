@@ -4,7 +4,7 @@ public:
 	DetalleDAO();
 	~DetalleDAO();
 
-	vector<Detalle> consultar();
+	vector<Detalle> consultar(char* codigoVenta);
 
 	void operator +=(Detalle obj);//INSERTAR
 
@@ -23,18 +23,23 @@ DetalleDAO::~DetalleDAO()
 }
 
 
-vector<Detalle> DetalleDAO::consultar() {
+vector<Detalle> DetalleDAO::consultar(char* codigoVenta) {
 	vector<Detalle> lista;
 	SqlConnection ^cn = Conexion::getConnection();
 	try {
-		SqlCommand ^command = gcnew SqlCommand("select * from detalles", cn);
+		SqlCommand ^command = gcnew SqlCommand("select * "
+			+" from detalles where codigo_venta = @cod", cn);
 		cn->Open();
+
+		command->Parameters->AddWithValue("@cod", gcnew String(codigoVenta));
 		SqlDataReader ^dr = command->ExecuteReader();
 
 		while (dr->Read() == true) {
 
 			String ^m;
 			Detalle usu;
+
+			
 
 			m = dr["codigo_producto"]->ToString();
 			usu.setCodigo(Global::StringToChar(m));
@@ -108,3 +113,4 @@ void DetalleDAO::procesarDetalle(Detalle obj, int opcion) {
 
 vector<Detalle> listaDetalles;
 DetalleDAO daoDetalle;
+char *codDetalle;

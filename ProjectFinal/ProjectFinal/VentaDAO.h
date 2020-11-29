@@ -8,7 +8,7 @@ public:
 
 	vector<Venta> consultar();
 
-	vector<Venta> consultarPorFecha(DateTime fecha);
+	vector<Venta> consultarPorFecha(char* fecha);
 
 	void operator +=(Venta obj);//INSERTAR
 
@@ -42,6 +42,7 @@ vector<Venta> VentaDAO::consultar()
 {
 	vector<Venta> lista;
 	SqlConnection ^cn = Conexion::getConnection();
+
 	try {
 		SqlCommand ^command = gcnew SqlCommand("select * from ventas", cn);
 		cn->Open();
@@ -91,20 +92,21 @@ vector<Venta> VentaDAO::consultar()
 	return lista;
 }
 
-vector<Venta> VentaDAO::consultarPorFecha(DateTime fecha) {
+vector<Venta> VentaDAO::consultarPorFecha(char* fecha) {
 	vector<Venta> lista;
 	SqlConnection ^cn = Conexion::getConnection();
 	try {
 		SqlCommand ^command = gcnew SqlCommand("select * from ventas where fecha = @fecha", cn);
 		cn->Open();
+
+		command->Parameters->AddWithValue("@fecha", gcnew String(fecha));
 		SqlDataReader ^dr = command->ExecuteReader();
+
 
 		while (dr->Read() == true) {
 
 			String ^m;
 			Venta usu;
-
-			command->Parameters->AddWithValue("@fecha", fecha);
 
 			m = dr["codigo"]->ToString();
 			usu.setCodigo(StringToChar(m));
@@ -147,7 +149,6 @@ vector<Venta> VentaDAO::consultarPorFecha(DateTime fecha) {
 
 void VentaDAO::operator+=(Venta obj)
 {
-
 	try {
 		SqlConnection ^cn = Conexion::getConnection();
 		cn->Open();

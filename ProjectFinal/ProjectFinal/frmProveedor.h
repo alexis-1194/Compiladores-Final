@@ -580,7 +580,7 @@ namespace ProjectFinal {
 		strcpy(replaceCod, Global::replaceFirst(cod, 'V', '0'));
 		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = Convert::ToInt32(replaceCod);
+		n = atoi(replaceCod);
 		n++;
 		if (n < 10)
 			/*Se asigna un formato al codigo */

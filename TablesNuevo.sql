@@ -79,9 +79,8 @@ alter table productos add foreign key(codigo_proveedor) references proveedores(c
 
 insert into productos
 values('PROD_00001', 'Mouse Logitech B100', 'Mouse', 45.50, 56.40,
-		15, 'PROV_00001');
+		60, 'PROV_00001');
 
-		
 
 create table boletas
 (
@@ -94,7 +93,7 @@ alter table boletas add unique(numero);
 
 insert into boletas
 values('B_00001', 'B02-0001393');
-
+--delete from boletas;
 
 create table facturas
 (
@@ -117,16 +116,17 @@ create table ventas
 	--factura o boleta
 	tipo_comprobante varchar(50) not null,
 	codigo_comprobante varchar(10) not null,
-
 	sub_total numeric not null,
 	igv numeric not null,
 	total numeric not null,
 	fecha date,
 );
+
 select* from boletas
 delete from boletas where codigo = 'F_00001';
 
 select * from ventas;
+select * from detalles;
 
 --delete from ventas where codigo = 'V_00002'
 
@@ -134,9 +134,7 @@ alter table ventas add primary key(codigo);
 alter table ventas add foreign key(codigo_cliente) references clientes(codigo);
 alter table ventas add foreign key(codigo_empleado) references empleados(codigo);
 
-
-
-
+--no definido
 create table compras
 (
 	codigo varchar(10) not null,
@@ -167,8 +165,9 @@ create table Detalles
 	importe_producto float not null,
 	codigo_venta varchar(10) not null
 )
-alter table detalles add foreign key(codigo_venta) references ventas(codigo)
 
+alter table detalles add foreign key(codigo_producto) references productos(codigo)
+alter table detalles add foreign key(codigo_venta) references ventas(codigo)
 
 
 

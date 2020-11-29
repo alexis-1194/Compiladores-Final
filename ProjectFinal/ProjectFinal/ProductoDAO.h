@@ -94,13 +94,14 @@ void ProductoDAO::operator+=(Producto obj)
 		command->CommandText =
 			"INSERT INTO productos values(@codigo, @nombre, @linea, @precio_compra,"
 			+ "@precio_venta,@cantidad,@codigo_proveedor)";
+
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
 		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getDescripcion()));
 		command->Parameters->AddWithValue("@linea", gcnew String(obj.getLinea()));
 		command->Parameters->AddWithValue("@precio_compra", obj.getPrecioCompra());
 		command->Parameters->AddWithValue("@precio_venta", obj.getPrecioVenta());
 		command->Parameters->AddWithValue("@cantidad", obj.getCantidad());
-		command->Parameters->AddWithValue("@codigo_proveedor", gcnew String(obj.getCodigo()));
+		command->Parameters->AddWithValue("@codigo_proveedor", gcnew String(obj.getCodigoProveedor()));
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Registrado");
@@ -109,7 +110,7 @@ void ProductoDAO::operator+=(Producto obj)
 	//Excepción personalizada -> Error de Llave única
 	catch (SqlException ^exs) {
 		cout << StringToChar(exs->Message) << endl;
-		MessageBox::Show("Clave o código ya existe");
+		MessageBox::Show(exs->Message);
 	}
 	/*catch (Exception ^exs) {
 		MessageBox::Show(exs->Message);
@@ -128,6 +129,7 @@ void ProductoDAO::operator*=(Producto obj)
 			+ "precio_compra = @precio_compra, precio_venta = @precio_venta,"
 			+ "cantidad = @cantidad, codigo_proveedor= @codigo_proveedor "
 			+ "where codigo = @codigo";
+
 		command->Parameters->AddWithValue("@codigo", gcnew String(obj.getCodigo()));
 		command->Parameters->AddWithValue("@nombre", gcnew String(obj.getDescripcion()));
 		command->Parameters->AddWithValue("@linea", gcnew String(obj.getLinea()));
