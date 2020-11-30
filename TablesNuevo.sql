@@ -89,10 +89,17 @@ create table boletas
 );
 
 alter table Boletas add primary key(codigo);
-alter table boletas add unique(numero);
+--alter table boletas add unique(numero);
 
 insert into boletas
 values('B_00001', 'B02-0001393');
+insert into boletas
+values('B_00002', 'B879-9789');
+insert into boletas
+values('B_00003', 'B879-9789');
+insert into boletas
+values('B_00004', 'B879-9789');
+
 --delete from boletas;
 
 create table facturas
@@ -123,6 +130,7 @@ create table ventas
 );
 
 select* from boletas
+select * from facturas;
 delete from boletas where codigo = 'F_00001';
 
 select * from ventas;
@@ -169,20 +177,20 @@ create table Detalles
 alter table detalles add foreign key(codigo_producto) references productos(codigo)
 alter table detalles add foreign key(codigo_venta) references ventas(codigo)
 
+select * from Empleados;
+select * from Clientes;
+select * from ventas;
+select * from Empleados;
 
 
-
-select day(fechaNac_cliente)
-from clientes
-select *
-from clientes
-select nombre_Cliente
-from clientes
-
-
-
-
-select month(fech_empleado)
-from empleados
-select *
-from Empleados
+create view view_reporte
+	select e.Nombre +' '+ e.Apellidos as Empleado, c.nombre +' '+ c.apellidos as cliente,
+	d.nombre_producto +'	'+  convert(varchar,d.precio_producto) 
+	+'	'+ convert(varchar,d.cantidad_producto) 
+	+'	'+ convert(varchar,d.importe_producto) as 'Detalle',
+	convert(varchar,v.sub_total) + '	' + convert(varchar,v.igv)
+	+ '	' + convert(varchar,v.total) as 'Datos_precio', v.codigo
+	from ventas as v inner join detalles as d 
+	on v.codigo = d.codigo_venta inner join empleados as e
+	on v.codigo_empleado = e.codigo inner join Clientes as c
+	on v.codigo_cliente = c.codigo;

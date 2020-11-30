@@ -630,11 +630,12 @@ namespace ProjectFinal {
 			strcpy_s(cod, pro.getCodigo());
 		}
 
-		char *replaceCod = Global::replaceFirst(cod, 'P', '0');
-		strcpy(replaceCod, Global::replaceFirst(cod, 'R', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, 'O', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, 'D', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+		char replaceCod[11];
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'P', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'R', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'O', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'D', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
 		n = atoi(replaceCod);
 		n++;

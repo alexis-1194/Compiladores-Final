@@ -80,12 +80,12 @@ void FacturaDAO::operator+=(Factura obj)
 
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
-		MessageBox::Show("Registrado");
+		//MessageBox::Show("Registrado");
 		cn->Close();
 	}
 	catch (SqlException ^exs) {
 		cout << StringToChar(exs->Message) << endl;
-		MessageBox::Show("Clave o código ya existe");
+		MessageBox::Show(exs->Message);
 	}
 	/*catch (Exception ^exs) {
 		MessageBox::Show(exs->Message);

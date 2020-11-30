@@ -106,7 +106,7 @@ void ProveedorDAO::operator+=(Proveedor obj)
 	}
 	catch (SqlException ^exs) {
 		cout << StringToChar(exs->Message) << endl;
-		MessageBox::Show("Clave o código ya existe");
+		MessageBox::Show(exs->Message);
 	}
 	/*catch (Exception ^exs) {
 		MessageBox::Show(exs->Message);

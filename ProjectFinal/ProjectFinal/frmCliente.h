@@ -705,16 +705,17 @@ namespace ProjectFinal {
 		//CLI_000001
 		char cod[11]; int n = 0;
 
-		vector<Producto> lista = daoProducto.consultar();
+		vector<Cliente> lista = daoCliente.consultar();
 
-		for (Producto pro : lista) {
+		for (Cliente pro : lista) {
 			strcpy_s(cod, pro.getCodigo());
 		}
 
-		char *replaceCod = Global::replaceFirst(cod, 'C', '0');
-		strcpy(replaceCod, Global::replaceFirst(cod, 'L', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, 'I', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+		char replaceCod[11];
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'C', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'L', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'I', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
 		n = atoi(replaceCod);
 		n++;

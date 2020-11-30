@@ -270,13 +270,17 @@ namespace ProjectFinal {
 	}
 
 	private: System::Void frmRegistroSalidas_Load(System::Object^  sender, System::EventArgs^  e) {
-		/*listaVentas = daoVenta.consultar();
-		imprimir(listaVentas);*/
+		DateTime f = dtpFecha->Value;
+		int dia = Convert::ToInt32(f.Day);
+		int mes = Convert::ToInt32(f.Month);
+		int anio = Convert::ToInt32(f.Year);
+
+		String ^fecha = anio + "-" + mes + "-" + dia;
+		listaVentas = daoVenta.consultarPorFecha(Global::StringToChar(fecha));
+		imprimir(listaVentas);
 	}
 	private: System::Void dgvLista_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		if (e->ColumnIndex == 0) {
-			/*cargarForm(gcnew frmDetalle());*/
-			//idDetalle = Convert::ToInt32(dgvLista->Columns[e->ColumnIndex]->Name->ToString());
 
 			codDetalle = Global::StringToChar(dgvLista->CurrentRow->Cells[0]->Value->ToString());
 			frmDetalle ^m = gcnew frmDetalle();

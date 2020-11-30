@@ -30,6 +30,7 @@
     <ClCompile Include="frmRegistrarVenta.cpp" />
     <ClCompile Include="frmRegistroIngresos.cpp" />
     <ClCompile Include="frmRegistroSalidas.cpp" />
+    <ClCompile Include="frmReporte.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,9 @@
     <ClInclude Include="frmRegistroSalidas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmReporte.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Global.h" />
     <ClInclude Include="Producto.h" />
     <ClInclude Include="ProductoDAO.h" />
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistroSalidas.resx">
       <DependentUpon>frmRegistroSalidas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporte.resx">
+      <DependentUpon>frmReporte.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Label="Globals">

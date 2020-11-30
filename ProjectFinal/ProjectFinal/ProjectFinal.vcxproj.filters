@@ -35,6 +35,9 @@
     <ClCompile Include="frmDetalle.cpp">
       <Filter>views</Filter>
     </ClCompile>
+    <ClCompile Include="frmReporte.cpp">
+      <Filter>views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="views">
@@ -144,6 +147,9 @@
     <ClInclude Include="frmDetalle.h">
       <Filter>views</Filter>
     </ClInclude>
+    <ClInclude Include="frmReporte.h">
+      <Filter>views</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmLogin.resx" />
@@ -154,5 +160,6 @@
     <EmbeddedResource Include="frmProveedor.resx" />
     <EmbeddedResource Include="frmRegistrarVenta.resx" />
     <EmbeddedResource Include="frmRegistroSalidas.resx" />
+    <EmbeddedResource Include="frmDetalle.resx" />
   </ItemGroup>
 </Project>

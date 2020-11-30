@@ -681,15 +681,16 @@ namespace ProjectFinal {
 
 	private: void Codigo() {
 		char cod[11]; int n = 0;
-		vector<Producto> lista = daoProducto.consultar();
-		for (Producto pro : lista) {
+		vector<Usuario> lista = daoUsuario.consultar();
+		for (Usuario pro : lista) {
 			strcpy_s(cod, pro.getCodigo());
 		}
 
-		char *replaceCod = Global::replaceFirst(cod, 'E', '0');
-		strcpy(replaceCod, Global::replaceFirst(cod, 'M', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, 'P', '0'));
-		strcpy(replaceCod, Global::replaceFirst(cod, '_', '0'));
+		char replaceCod[11]; 
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'E', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'M', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, 'P', '0'));
+		strcpy_s(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
 		n = atoi(replaceCod);
 		n++;

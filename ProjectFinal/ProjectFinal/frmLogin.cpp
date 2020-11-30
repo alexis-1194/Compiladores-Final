@@ -33,6 +33,7 @@ using namespace std;
 #include "ClienteDAO.h"
 #include "UsuarioDAO.h"
 //View
+#include "frmReporte.h"
 #include "frmDetalle.h"
 #include "frmRegistrarCompra.h"
 #include "frmRegistrarVenta.h"
