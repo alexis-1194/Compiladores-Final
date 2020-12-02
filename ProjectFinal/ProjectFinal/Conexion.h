@@ -14,7 +14,6 @@ Conexion::Conexion()
 {
 }
 
-
 Conexion::~Conexion()
 {
 }

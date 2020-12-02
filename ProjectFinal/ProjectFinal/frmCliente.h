@@ -663,7 +663,7 @@ namespace ProjectFinal {
 		txtCorreo->Enabled = false;
 		dtpFecha->Enabled = false;
 		txtBuscar->Enabled = false;
-		groupBox2->Enabled = false;
+		//groupBox2->Enabled = false;
 
 		txtCodigo->Text = ""; txtDNI->Text = "";	txtNombre->Text = "";
 		txtApellidos->Text = ""; txtCelular->Text = ""; txtCorreo->Text = ""; txtBuscar->Text = "";

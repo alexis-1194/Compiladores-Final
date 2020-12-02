@@ -650,7 +650,7 @@ namespace ProjectFinal {
 		strcpy_s(replaceCod, Global::replaceFirst(cod, 'B', '0'));
 		strcpy_s(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = Convert::ToInt32(replaceCod);
+		n = atoi(replaceCod);
 		n++;
 
 		if (n < 10)
@@ -866,7 +866,7 @@ namespace ProjectFinal {
 			int cant = Convert::ToInt32(dgvLista->Rows[i]->Cells[3]->Value);
 			ctaux += cant;/*acumula las cantidades
 						  de los productos del mismo tipo*/
-			datopro.setCantidad(ctaux);//Se establece la cantidad total a vender
+			datopro.setCantidad(cant);//Se establece la cantidad total a vender
 
 			/*bool estado = false;*/
 			for (int i = 0; i < (int)lista.size(); i++) {
@@ -889,6 +889,7 @@ namespace ProjectFinal {
 						acumCantidad = lista[i].getCantidad();
 						bool estado = true;
 					}
+
 					//Cantidad menor a Stock registrado
 					else {
 						lista[i].setCantidad(lista[i].getCantidad() - datopro.getCantidad());
@@ -1008,10 +1009,11 @@ namespace ProjectFinal {
 					datoPro.setCantidad(Convert::ToInt32(dgvLista->Rows[i]->Cells[3]->Value));
 					datoPro.setSubTotal(Convert::ToDouble(dgvLista->Rows[i]->Cells[4]->Value));
 					datoPro.setCodigoVenta(dato.getCodigo());//
+					codDetalle = dato.getCodigo();//Para usar en el ticket(frmReporte)
 
 					daoDetalle.procesarDetalle(datoPro, 1);
 
-					/*frmReporte ^m = gcnew frmReporte();
+					frmReporte ^m = gcnew frmReporte();
 					m->TopLevel = false;
 					m->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 					this->Controls->Add(m);
@@ -1019,7 +1021,7 @@ namespace ProjectFinal {
 
 					m->BringToFront();
 
-					m->Show();*/
+					m->Show();
 				}
 			}
 
@@ -1067,6 +1069,7 @@ namespace ProjectFinal {
 			}
 		}
 		catch (Exception ^exs) {
+			cout << Global::StringToChar(exs->Message) << endl;
 			MessageBox::Show("Error");
 			txtCantidad->Text = "1";
 		}

@@ -1,5 +1,3 @@
 ﻿  frmLogin.cpp
-c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmreporte.h(275): warning C4101: 'exs': variable local sin referencia
-c:\users\usuario\desktop\finalcompiladores\projectfinal\projectfinal\frmregistrarventa.h(1069): warning C4101: 'exs': variable local sin referencia
   frmCliente.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   ProjectFinal.vcxproj -> C:\Users\Usuario\Desktop\FinalCompiladores\ProjectFinal\\bin\Win32\Debug\ProjectFinal.exe
