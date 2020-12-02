@@ -377,6 +377,7 @@ namespace ProjectFinal {
 			this->txtApellidos->Name = L"txtApellidos";
 			this->txtApellidos->Size = System::Drawing::Size(219, 20);
 			this->txtApellidos->TabIndex = 129;
+			this->txtApellidos->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtApellidos_KeyPress);
 			// 
 			// label6
 			// 
@@ -418,6 +419,7 @@ namespace ProjectFinal {
 			this->txtPass->Size = System::Drawing::Size(115, 20);
 			this->txtPass->TabIndex = 134;
 			this->txtPass->UseSystemPasswordChar = true;
+			this->txtPass->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtPass_KeyPress);
 			// 
 			// txtUsu
 			// 
@@ -427,6 +429,7 @@ namespace ProjectFinal {
 			this->txtUsu->Name = L"txtUsu";
 			this->txtUsu->Size = System::Drawing::Size(115, 20);
 			this->txtUsu->TabIndex = 133;
+			this->txtUsu->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtUsu_KeyPress);
 			// 
 			// label4
 			// 
@@ -489,6 +492,7 @@ namespace ProjectFinal {
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(219, 20);
 			this->txtNombre->TabIndex = 127;
+			this->txtNombre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtNombre_KeyPress);
 			// 
 			// txtCelular
 			// 
@@ -498,6 +502,7 @@ namespace ProjectFinal {
 			this->txtCelular->Name = L"txtCelular";
 			this->txtCelular->Size = System::Drawing::Size(219, 20);
 			this->txtCelular->TabIndex = 126;
+			this->txtCelular->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtCelular_KeyPress);
 			// 
 			// txtCorreo
 			// 
@@ -507,6 +512,7 @@ namespace ProjectFinal {
 			this->txtCorreo->Name = L"txtCorreo";
 			this->txtCorreo->Size = System::Drawing::Size(219, 20);
 			this->txtCorreo->TabIndex = 125;
+			this->txtCorreo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtCorreo_KeyPress);
 			// 
 			// txtDNI
 			// 
@@ -516,6 +522,7 @@ namespace ProjectFinal {
 			this->txtDNI->Name = L"txtDNI";
 			this->txtDNI->Size = System::Drawing::Size(219, 20);
 			this->txtDNI->TabIndex = 124;
+			this->txtDNI->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmEmpleado::txtDNI_KeyPress);
 			// 
 			// label5
 			// 
@@ -686,7 +693,7 @@ namespace ProjectFinal {
 			strcpy_s(cod, pro.getCodigo());
 		}
 
-		char replaceCod[11]; 
+		char replaceCod[11];
 		strcpy_s(replaceCod, Global::replaceFirst(cod, 'E', '0'));
 		strcpy_s(replaceCod, Global::replaceFirst(cod, 'M', '0'));
 		strcpy_s(replaceCod, Global::replaceFirst(cod, 'P', '0'));
@@ -831,6 +838,31 @@ namespace ProjectFinal {
 			if (e->Value != nullptr) {
 				e->Value = gcnew String('*', e->Value->ToString()->Length);
 			}
+		}
+	}
+	private: System::Void txtDNI_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
+	}
+	private: System::Void txtNombre_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtApellidos_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtCelular_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
+	}
+	private: System::Void txtCorreo_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		//Global::validarSoloLetras(e);
+	}
+	private: System::Void txtUsu_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = true;
+		}
+	}
+	private: System::Void txtPass_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = true;
 		}
 	}
 	};

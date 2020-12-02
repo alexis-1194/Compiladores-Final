@@ -281,7 +281,7 @@ namespace ProjectFinal {
 	}
 	private: System::Void dgvLista_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		if (e->ColumnIndex == 0) {
-
+			
 			codDetalle = Global::StringToChar(dgvLista->CurrentRow->Cells[0]->Value->ToString());
 			frmDetalle ^m = gcnew frmDetalle();
 			m->TopLevel = false;

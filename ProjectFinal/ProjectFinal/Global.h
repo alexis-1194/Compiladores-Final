@@ -7,10 +7,57 @@ public:
 	static char * StringToChar(String ^m);
 
 	static char* replace(char* str, char buscar, char r);
-		
+
 	static char* replaceFirst(char* str, char buscar, char r);
-	
-	
+
+	static void validarSoloNumeros(System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (Char::IsDigit(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsControl(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+			/*MessageBox::Show("Solo numeros");*/
+		}
+	}
+
+	static void validarSoloLetras(System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (Char::IsLetter(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsControl(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+			/*MessageBox::Show("Solo letras");*/
+		}
+	}
+
+	static void validarSoloLetrasNumeros(System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (Char::IsLetter(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsControl(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsDigit(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+			/*MessageBox::Show("Solo letras y numeros");*/
+		}
+	}
+
 private:
 
 };

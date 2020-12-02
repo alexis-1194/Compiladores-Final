@@ -403,6 +403,7 @@ namespace ProjectFinal {
 			this->txtApellidos->Name = L"txtApellidos";
 			this->txtApellidos->Size = System::Drawing::Size(219, 20);
 			this->txtApellidos->TabIndex = 103;
+			this->txtApellidos->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmCliente::txtApellidos_KeyPress);
 			// 
 			// label3
 			// 
@@ -509,6 +510,7 @@ namespace ProjectFinal {
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(219, 20);
 			this->txtNombre->TabIndex = 95;
+			this->txtNombre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmCliente::txtNombre_KeyPress);
 			// 
 			// txtCelular
 			// 
@@ -518,6 +520,7 @@ namespace ProjectFinal {
 			this->txtCelular->Name = L"txtCelular";
 			this->txtCelular->Size = System::Drawing::Size(219, 20);
 			this->txtCelular->TabIndex = 94;
+			this->txtCelular->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmCliente::txtCelular_KeyPress);
 			// 
 			// txtCorreo
 			// 
@@ -527,6 +530,7 @@ namespace ProjectFinal {
 			this->txtCorreo->Name = L"txtCorreo";
 			this->txtCorreo->Size = System::Drawing::Size(219, 20);
 			this->txtCorreo->TabIndex = 93;
+			this->txtCorreo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmCliente::txtCorreo_KeyPress);
 			// 
 			// txtDNI
 			// 
@@ -536,6 +540,7 @@ namespace ProjectFinal {
 			this->txtDNI->Name = L"txtDNI";
 			this->txtDNI->Size = System::Drawing::Size(219, 20);
 			this->txtDNI->TabIndex = 92;
+			this->txtDNI->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmCliente::txtDNI_KeyPress);
 			// 
 			// label5
 			// 
@@ -779,7 +784,7 @@ namespace ProjectFinal {
 					int anio = Convert::ToInt16(f.Year);
 					String ^fecha = anio + "-" + mes + "-" + dia;
 					client.setFecha(Global::StringToChar(fecha));
-					daoCliente.clienteProcesar(client, 1);
+					daoCliente.clienteProcesar(client, Constante::INS);
 
 					//MessageBox::Show("Codigo valido");
 					/*listaClientes = daoCliente.consultar();
@@ -847,6 +852,22 @@ namespace ProjectFinal {
 
 		btnModificar->Enabled = true;
 		btnEliminar->Enabled = true;
+	}
+
+	private: System::Void txtDNI_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
+	}
+	private: System::Void txtNombre_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtApellidos_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtCelular_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
+	}
+	private: System::Void txtCorreo_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		//Global::validarSoloLetras(e);
 	}
 	};
 }

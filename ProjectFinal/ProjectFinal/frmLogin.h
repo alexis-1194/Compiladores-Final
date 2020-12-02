@@ -118,6 +118,7 @@ namespace ProjectFinal {
 			this->txtPassword->TabIndex = 7;
 			this->txtPassword->Text = L"CONTRASEÑA";
 			this->txtPassword->UseSystemPasswordChar = true;
+			this->txtPassword->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmLogin::txtPassword_KeyPress);
 			// 
 			// txtUser
 			// 
@@ -130,6 +131,8 @@ namespace ProjectFinal {
 			this->txtUser->Size = System::Drawing::Size(358, 27);
 			this->txtUser->TabIndex = 6;
 			this->txtUser->Text = L"USUARIO";
+			this->txtUser->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmLogin::txtUser_KeyPress);
+			this->txtUser->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &frmLogin::txtUser_KeyUp);
 			// 
 			// ptrMinimizar
 			// 
@@ -194,7 +197,7 @@ namespace ProjectFinal {
 			for (Usuario user : listaUsuarios) {
 				if (txtUser->Text == gcnew String(user.getUserName()) &&
 					txtPassword->Text == gcnew String(user.getPassWord())) {
-					this->Visible = false;
+					this->Visible = false;//frmlogin
 					//Esconder ventana login
 					/*strcpy_s(usuarioActual, lista_empAux[i].nombre);*/
 					//Abrir ventana principal
@@ -252,6 +255,20 @@ namespace ProjectFinal {
 
 	private: System::Void frmLogin_Load(System::Object^  sender, System::EventArgs^  e) {
 		conectar_BD();
+	}
+	private: System::Void txtUser_KeyUp(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	}
+
+	private: System::Void txtUser_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = true;
+		}
+	}
+
+	private: System::Void txtPassword_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if (Char::IsSeparator(e->KeyChar)) {
+			e->Handled = true;
+		}
 	}
 	};
 }

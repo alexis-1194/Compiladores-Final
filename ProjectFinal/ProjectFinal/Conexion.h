@@ -5,7 +5,7 @@ public:
 	~Conexion();
 
 	static SqlConnection ^getConnection();
-
+	
 private:
 
 };
@@ -27,7 +27,7 @@ SqlConnection ^ Conexion::getConnection()
 	st = gcnew SqlConnectionStringBuilder();
 	st->DataSource = "DESKTOP-2E54QI4\\MSSQLSERVER2";
 	st->InitialCatalog = "DB_SISTEMACP";
-	st->IntegratedSecurity = true;
+	st->IntegratedSecurity = true;//false 
 
 	cn = gcnew SqlConnection(Convert::ToString(st));
 	return cn;

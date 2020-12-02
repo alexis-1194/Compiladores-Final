@@ -91,9 +91,9 @@ namespace ProjectFinal {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->txtTOTAL = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->txtIGV = (gcnew System::Windows::Forms::TextBox());
@@ -287,6 +287,7 @@ namespace ProjectFinal {
 			this->txtCantidad->Name = L"txtCantidad";
 			this->txtCantidad->Size = System::Drawing::Size(95, 20);
 			this->txtCantidad->TabIndex = 197;
+			this->txtCantidad->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmRegistrarVenta::txtCantidad_KeyPress);
 			this->txtCantidad->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &frmRegistrarVenta::txtCantidad_KeyUp);
 			// 
 			// txtPrecio
@@ -475,15 +476,15 @@ namespace ProjectFinal {
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
 			this->dgvLista->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dgvLista->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::HotTrack;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::HotTrack;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvLista->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvLista->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvLista->ColumnHeadersHeight = 30;
 			this->dgvLista->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dgvLista->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -496,24 +497,24 @@ namespace ProjectFinal {
 			this->dgvLista->Name = L"dgvLista";
 			this->dgvLista->ReadOnly = true;
 			this->dgvLista->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::SteelBlue;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvLista->RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::SteelBlue;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvLista->RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(53)), static_cast<System::Int32>(static_cast<System::Byte>(61)),
 				static_cast<System::Int32>(static_cast<System::Byte>(144)));
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::SteelBlue;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::White;
-			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::SteelBlue;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::Color::White;
+			this->dgvLista->RowsDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvLista->Size = System::Drawing::Size(442, 462);
 			this->dgvLista->TabIndex = 180;
 			this->dgvLista->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmRegistrarVenta::dgvLista_CellClick);
@@ -641,7 +642,7 @@ namespace ProjectFinal {
 	private: void CodigoBoleta() {
 		char cod[11]; int n = 0;
 		vector<Boleta> lista = daoBoleta.consultar();
-		for (Boleta pro : lista) {
+		for (Boleta pro : lista) {//B_00001 -> 0000010
 			strcpy_s(cod, pro.getCodigo());//copia hasta quedar con el ultimo
 		}
 
@@ -649,7 +650,7 @@ namespace ProjectFinal {
 		strcpy_s(replaceCod, Global::replaceFirst(cod, 'B', '0'));
 		strcpy_s(replaceCod, Global::replaceFirst(cod, '_', '0'));
 
-		n = atoi(replaceCod);
+		n = Convert::ToInt32(replaceCod);
 		n++;
 
 		if (n < 10)
@@ -667,7 +668,7 @@ namespace ProjectFinal {
 			MessageBox::Show("Supero el maximo de boletas");
 	}
 
-	private: void CodigoFactura() {//F_000001
+	private: void CodigoFactura() {//F_00001
 		char cod[11]; int n = 0;
 		vector<Factura> lista = daoFactura.consultar();
 		for (Factura pro : lista) {
@@ -699,7 +700,7 @@ namespace ProjectFinal {
 	private: void Codigo() {//Cargar codigo venta
 		char cod[11]; int n = 0;
 		vector<Venta> lista = daoVenta.consultar();
-		for (Venta pro : lista) {
+		for (Venta pro : lista) {//V_00001
 			strcpy_s(cod, pro.getCodigo());//copia hasta quedar con el ultimo
 		}
 
@@ -725,25 +726,17 @@ namespace ProjectFinal {
 	}
 
 
-	private: static String^ codigo_Cliente;//campo a guardar en la tabla venta
+	private: static String^ codigo_Cliente;//campo a guardar en la tabla venta(COD_CLIENTE)
 
 	private: System::Void cboCliente_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 
-		cCliente = cboCliente->SelectedIndex + 1;
-		/*cboCliente->Items->Clear();*/
+		cCliente = cboCliente->SelectedIndex + 1;//
 
 		codigo_Cliente = gcnew String(listaClientes[cCliente - 1].getCodigo());
 
-		/*for (int i = 0; i < (int)listaClientes.size(); i++) {
-			cboCliente->Items->Add(gcnew String(listaClientes[i].getCodigo()));
-		}
-
-		cboCliente->SelectedItem = gcnew String(listaClientes[cCliente - 1].getCodigo());*/
-
-		//cargarCliente();
 	}
 	private: System::Void cboTipoDoc_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-		tipoDoc = cboTipoDoc->SelectedIndex + 1;
+		tipoDoc = cboTipoDoc->SelectedIndex + 1;//boleta - factura
 		if (tipoDoc == 1) {
 			CodigoBoleta();
 		}
@@ -758,15 +751,14 @@ namespace ProjectFinal {
 		txtCodigo->Text = gcnew String(listaProductos[tipoProducto - 1].getCodigo());
 		txtPrecio->Text = Convert::ToString(listaProductos[tipoProducto - 1].getPrecioVenta());
 		txtStock->Text = Convert::ToString(listaProductos[tipoProducto - 1].getCantidad());
+		txtCantidad->Enabled = true;
 	}
 	private: System::Void frmRegistrarVenta_Load(System::Object^  sender, System::EventArgs^  e) {
 		lblUsuario->Text = gcnew String(empleadoActual);
-		//Codigo();/*venta*/
-		//listaClientes = daoCliente.consultar(); //Para utilizar en el ComboBox de clientes
-		//listaProductos = daoProducto.consultar();//Para utilizar en el ComboBox de productos
 		cargarCliente();//combobox cliente
-		cargarProducto();
-		Codigo();
+		cargarProducto();//combox producto
+		Codigo();//codigo venta
+		txtCantidad->Enabled = false;
 	}
 			 //Agregar detalle producto
 	private: void agregarProductoAux(Producto dato) {
@@ -783,7 +775,7 @@ namespace ProjectFinal {
 	private: void eliminarProductoAux(Producto dato) {
 		for (int i = 0; i < (int)listaProdAux.size(); i++) {
 			if (strcmp(listaProdAux[i].getCodigo(), dato.getCodigo()) == 0) {
-				listaProdAux.erase(listaProdAux.begin() + i);
+				listaProdAux.erase(listaProdAux.begin() + i);//borrar elemento
 				break;
 			}
 		}
@@ -827,11 +819,12 @@ namespace ProjectFinal {
 		}
 		else {
 			Producto pro;
-			ProductoDAO dao;
+			//ProductoDAO dao;
 			pro.setCodigo(Global::StringToChar(txtCodigo->Text));
 			pro.setDescripcion(Global::StringToChar(cboProducto->SelectedItem->ToString()));
 			pro.setPrecioVenta(Convert::ToDouble(txtPrecio->Text));
 			pro.setCantidad(Convert::ToInt32(txtCantidad->Text));
+
 			agregarProductoAux(pro);
 			imprimir(listaProdAux);//dataGrid
 		}
@@ -845,7 +838,8 @@ namespace ProjectFinal {
 		}
 		else {
 			Producto pro;
-			ProductoDAO dao;
+			//ProductoDAO dao;
+
 			pro.setCodigo(Global::StringToChar(txtCodigo->Text));
 			eliminarProductoAux(pro);
 			imprimir(listaProdAux);
@@ -853,6 +847,7 @@ namespace ProjectFinal {
 			txtCodigo->Text = "";
 			txtPrecio->Text = "";
 			txtCantidad->Text = "";
+
 		}
 	}
 
@@ -894,14 +889,12 @@ namespace ProjectFinal {
 						acumCantidad = lista[i].getCantidad();
 						bool estado = true;
 					}
-
 					//Cantidad menor a Stock registrado
 					else {
 						lista[i].setCantidad(lista[i].getCantidad() - datopro.getCantidad());
 						acumCantidad = lista[i].getCantidad();
 						bool estado = true;
 					}
-
 				}
 			}
 			if (estado == false) {
@@ -910,7 +903,7 @@ namespace ProjectFinal {
 		}
 		return estado;
 	}
-
+			 //modifico en la base de datos
 	private: void modifcarBD() {
 
 		int st = 0;
@@ -996,16 +989,16 @@ namespace ProjectFinal {
 
 				if (tipoDoc == 1) {//boleta -> codigo boleta
 					bo.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
-					bo.setNumero("B879-9789");
+					bo.setNumero("B879-9789");//
 					daoBoleta.boletaProcesar(bo, 1);
 				}
 				else {//factura -> codigo boleta
 					fa.setCodigo(Global::StringToChar(txtNumeroDoc->Text));
-					fa.setNumero("F879-9789");
+					fa.setNumero("F879-9789");//
 					daoFactura.facturaProcesar(fa, 1);
 				}
 
-				daoVenta.ventaProcesar(dato, 1);
+				daoVenta.ventaProcesar(dato, 1);//insertar en la tabla venta
 				for (int i = 0; i < dgvLista->RowCount; i++) {
 					Detalle datoPro;
 
@@ -1014,10 +1007,11 @@ namespace ProjectFinal {
 					datoPro.setPrecio(Convert::ToDouble(dgvLista->Rows[i]->Cells[2]->Value));
 					datoPro.setCantidad(Convert::ToInt32(dgvLista->Rows[i]->Cells[3]->Value));
 					datoPro.setSubTotal(Convert::ToDouble(dgvLista->Rows[i]->Cells[4]->Value));
-					datoPro.setCodigoVenta(dato.getCodigo());
+					datoPro.setCodigoVenta(dato.getCodigo());//
 
 					daoDetalle.procesarDetalle(datoPro, 1);
-					frmReporte ^m = gcnew frmReporte();
+
+					/*frmReporte ^m = gcnew frmReporte();
 					m->TopLevel = false;
 					m->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 					this->Controls->Add(m);
@@ -1025,22 +1019,16 @@ namespace ProjectFinal {
 
 					m->BringToFront();
 
-					m->Show();
+					m->Show();*/
 				}
 			}
 
-			/*cboCliente->SelectedIndex = -1, cboTipoDoc->SelectedIndex = -1,
-				cboProducto->SelectedIndex = -1, txtCantidad->Text = "",
-				txtCodigo->Text = "", txtPrecio->Text = "",*/
-
-				/*cboCliente->Text = ""; cboTipoDoc->Text = "";
-				cboProducto->Text = "";*/
-			txtCantidad->Text = "";
+			/*txtCantidad->Text = "";
 			txtCodigo->Text = "", txtPrecio->Text = "",
 				txtSUBTOTAL->Text = "", txtIGV->Text = "", txtTOTAL->Text = "",
-				dgvLista->Rows->Clear();
+				dgvLista->Rows->Clear();*/
 
-			Codigo();
+			Codigo();//codigo venta
 		}
 	}
 
@@ -1068,15 +1056,23 @@ namespace ProjectFinal {
 		}
 		return estado;
 	}
-
+			 //
 	private: System::Void txtCantidad_KeyUp(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
 		Producto dato;
-		dato.setCodigo(Global::StringToChar(txtCodigo->Text));
-		if (!txtCantidad->Text->Trim()->Equals("")) {
-			dato.setCantidad(Convert::ToInt32(txtCantidad->Text->Trim()));
-			compararStock(listaProductos, dato);
+		try {
+			dato.setCodigo(Global::StringToChar(txtCodigo->Text));
+			if (!txtCantidad->Text->Trim()->Equals("")) {
+				dato.setCantidad(Convert::ToInt32(txtCantidad->Text->Trim()));
+				compararStock(listaProductos, dato);
+			}
 		}
+		catch (Exception ^exs) {
+			MessageBox::Show("Error");
+			txtCantidad->Text = "1";
+		}
+
 	}
+
 	private: System::Void btnPrueba_Click(System::Object^  sender, System::EventArgs^  e) {
 		frmReporte ^m = gcnew frmReporte();
 		m->TopLevel = false;
@@ -1087,6 +1083,19 @@ namespace ProjectFinal {
 		m->BringToFront();
 
 		m->Show();
+	}
+
+	private: System::Void txtCantidad_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		if (Char::IsDigit(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else if (Char::IsControl(e->KeyChar)) {
+			e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+			/*MessageBox::Show("Solo numeros");*/
+		}
 	}
 	};
 }

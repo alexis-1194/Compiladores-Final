@@ -161,5 +161,6 @@
     <EmbeddedResource Include="frmRegistrarVenta.resx" />
     <EmbeddedResource Include="frmRegistroSalidas.resx" />
     <EmbeddedResource Include="frmDetalle.resx" />
+    <EmbeddedResource Include="frmReporte.resx" />
   </ItemGroup>
 </Project>

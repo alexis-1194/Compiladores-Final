@@ -44,7 +44,10 @@ vector<Venta> VentaDAO::consultar()
 	SqlConnection ^cn = Conexion::getConnection();
 
 	try {
-		SqlCommand ^command = gcnew SqlCommand("select * from ventas", cn);
+		SqlCommand ^command = gcnew SqlCommand("select codigo,"+
+			"codigo_cliente,codigo_empleado,tipo_comprobante,codigo_comprobante,"+
+			"sub_total,igv,total,format(fecha,'yyyy-MM-dd') as fecha"+
+			" from ventas", cn);
 		cn->Open();
 		SqlDataReader ^dr = command->ExecuteReader();
 
@@ -96,7 +99,9 @@ vector<Venta> VentaDAO::consultarPorFecha(char* fecha) {
 	vector<Venta> lista;
 	SqlConnection ^cn = Conexion::getConnection();
 	try {
-		SqlCommand ^command = gcnew SqlCommand("select * from ventas where fecha = @fecha", cn);
+		SqlCommand ^command = gcnew SqlCommand("select codigo," +
+			"codigo_cliente,codigo_empleado,tipo_comprobante,codigo_comprobante," +
+			"sub_total,igv,total,format(fecha,'yyyy-MM-dd') as fecha from ventas where fecha = @fecha", cn);
 		cn->Open();
 
 		command->Parameters->AddWithValue("@fecha", gcnew String(fecha));

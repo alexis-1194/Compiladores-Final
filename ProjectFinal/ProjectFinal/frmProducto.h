@@ -186,6 +186,7 @@ namespace ProjectFinal {
 			this->txtCantidad->Name = L"txtCantidad";
 			this->txtCantidad->Size = System::Drawing::Size(219, 20);
 			this->txtCantidad->TabIndex = 147;
+			this->txtCantidad->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProducto::txtCantidad_KeyPress);
 			// 
 			// label2
 			// 
@@ -219,6 +220,7 @@ namespace ProjectFinal {
 			this->txtPrecio_venta->Name = L"txtPrecio_venta";
 			this->txtPrecio_venta->Size = System::Drawing::Size(219, 20);
 			this->txtPrecio_venta->TabIndex = 144;
+			this->txtPrecio_venta->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProducto::txtPrecio_venta_KeyPress);
 			// 
 			// txtBuscar
 			// 
@@ -314,6 +316,7 @@ namespace ProjectFinal {
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(219, 20);
 			this->txtNombre->TabIndex = 136;
+			this->txtNombre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProducto::txtNombre_KeyPress);
 			// 
 			// txtPrecio_compra
 			// 
@@ -323,6 +326,7 @@ namespace ProjectFinal {
 			this->txtPrecio_compra->Name = L"txtPrecio_compra";
 			this->txtPrecio_compra->Size = System::Drawing::Size(219, 20);
 			this->txtPrecio_compra->TabIndex = 135;
+			this->txtPrecio_compra->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProducto::txtPrecio_compra_KeyPress);
 			// 
 			// txtCodigo
 			// 
@@ -603,7 +607,7 @@ namespace ProjectFinal {
 
 	private: void cargarProveedores(vector<Proveedor> lista) {
 		lista = daoProveedor.consultar();
-		for (int i = 0 ; i < (int)lista.size(); i++) {
+		for (int i = 0; i < (int)lista.size(); i++) {
 			cboProveedor->Items->Add(gcnew String(lista[i].getCodigo()));
 		}
 	}
@@ -622,7 +626,7 @@ namespace ProjectFinal {
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	}
-			 
+
 	private: void Codigo() {
 		char cod[11]; int n = 0;
 		vector<Producto> lista = daoProducto.consultar();
@@ -749,6 +753,32 @@ namespace ProjectFinal {
 
 		btnModificar->Enabled = true;
 		btnEliminar->Enabled = true;
+	}
+	private: System::Void txtNombre_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetrasNumeros(e);
+	}
+	private: System::Void txtPrecio_compra_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		int a = (txtPrecio_compra->Text)->IndexOf(".");
+		if ((e->KeyChar >= 48 && e->KeyChar <= 57) || e->KeyChar == 8 || e->KeyChar == 46) {
+			if (a != -1 && e->KeyChar == 46) e->Handled = true;
+			else e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+		}
+	}
+	private: System::Void txtPrecio_venta_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		int a = (txtPrecio_venta->Text)->IndexOf(".");
+		if ((e->KeyChar >= 48 && e->KeyChar <= 57) || e->KeyChar == 8 || e->KeyChar == 46) {
+			if (a != -1 && e->KeyChar == 46) e->Handled = true;
+			else e->Handled = false;
+		}
+		else {
+			e->Handled = true;
+		}
+	}
+	private: System::Void txtCantidad_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
 	}
 	};
 }

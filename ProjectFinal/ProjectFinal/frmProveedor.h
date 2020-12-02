@@ -334,6 +334,7 @@ namespace ProjectFinal {
 			this->txtTelefono->Name = L"txtTelefono";
 			this->txtTelefono->Size = System::Drawing::Size(146, 20);
 			this->txtTelefono->TabIndex = 133;
+			this->txtTelefono->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProveedor::txtTelefono_KeyPress);
 			// 
 			// label3
 			// 
@@ -354,6 +355,7 @@ namespace ProjectFinal {
 			this->txtDireccion->Name = L"txtDireccion";
 			this->txtDireccion->Size = System::Drawing::Size(276, 20);
 			this->txtDireccion->TabIndex = 129;
+			this->txtDireccion->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProveedor::txtDireccion_KeyPress);
 			// 
 			// label2
 			// 
@@ -396,6 +398,7 @@ namespace ProjectFinal {
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(276, 20);
 			this->txtNombre->TabIndex = 124;
+			this->txtNombre->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProveedor::txtNombre_KeyPress);
 			// 
 			// txtCategoria
 			// 
@@ -405,6 +408,7 @@ namespace ProjectFinal {
 			this->txtCategoria->Name = L"txtCategoria";
 			this->txtCategoria->Size = System::Drawing::Size(276, 20);
 			this->txtCategoria->TabIndex = 123;
+			this->txtCategoria->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProveedor::txtCategoria_KeyPress);
 			// 
 			// txtEmpresa
 			// 
@@ -414,6 +418,7 @@ namespace ProjectFinal {
 			this->txtEmpresa->Name = L"txtEmpresa";
 			this->txtEmpresa->Size = System::Drawing::Size(276, 20);
 			this->txtEmpresa->TabIndex = 122;
+			this->txtEmpresa->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &frmProveedor::txtEmpresa_KeyPress);
 			// 
 			// txtCodigo
 			// 
@@ -687,6 +692,21 @@ namespace ProjectFinal {
 
 		btnModificar->Enabled = true;
 		btnEliminar->Enabled = true;
+	}
+	private: System::Void txtNombre_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtCategoria_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtEmpresa_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloLetras(e);
+	}
+	private: System::Void txtDireccion_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		//Global::validarSoloLetras(e);
+	}
+	private: System::Void txtTelefono_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+		Global::validarSoloNumeros(e);
 	}
 	};
 }

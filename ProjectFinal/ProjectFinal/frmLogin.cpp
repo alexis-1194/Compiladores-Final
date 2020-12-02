@@ -12,6 +12,7 @@ using namespace std;
 
 #include "Conexion.h"
 //Utilidades
+
 #include "Constante.h"
 #include "Global.h"
 //Entidades

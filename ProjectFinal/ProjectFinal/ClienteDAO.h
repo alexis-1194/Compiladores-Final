@@ -6,13 +6,13 @@ public:
 
 	char* StringToChar(String ^m);
 
-	vector<Cliente> consultar();
+	vector<Cliente> consultar();//select
 
-	void operator +=(Cliente obj);
+	void operator +=(Cliente obj);//insert
 
-	void operator *=(Cliente obj);
+	void operator *=(Cliente obj);//update
 
-	void operator -=(Cliente obj);
+	void operator -=(Cliente obj);//delete
 
 	void clienteProcesar(Cliente obj, int opcion);
 
@@ -39,10 +39,10 @@ char * ClienteDAO::StringToChar(String ^ m)
 vector<Cliente> ClienteDAO::consultar()
 {
 	vector<Cliente> lista;
-	SqlConnection ^cn = Conexion::getConnection();
+	SqlConnection ^cn = Conexion::getConnection();//
 	try {
 		SqlCommand ^command = gcnew SqlCommand("select * from clientes", cn);
-		cn->Open();
+		cn->Open();//abro la conexion
 		SqlDataReader ^dr = command->ExecuteReader();
 
 		while (dr->Read() == true) {
@@ -78,10 +78,10 @@ vector<Cliente> ClienteDAO::consultar()
 		}
 		dr->Close();
 	}
-	catch (Exception ^exs) {
+	catch (SqlException ^exs) {
 		MessageBox::Show(exs->Message);
 	}
-	cn->Close();
+	cn->Close();//
 
 	return lista;
 }
@@ -106,21 +106,20 @@ void ClienteDAO::operator+=(Cliente obj)
 		command->Parameters->AddWithValue("@email", gcnew String(obj.getEmail()));
 		command->Parameters->AddWithValue("@genero", gcnew String(obj.getGenero()));
 		command->Parameters->AddWithValue("@fechaNac", gcnew String(obj.getFecha()));
+
 		//Ejecutar la consulta
 		command->ExecuteNonQuery();
 		MessageBox::Show("Registrado");
 		cn->Close();
 	}
 	catch (SqlException ^exs) {
-		cout << StringToChar(exs->Message) << endl;
+		//cout << StringToChar(exs->Message) << endl;
 		MessageBox::Show(exs->Message);
 	}
-	/*catch (Exception ^exs) {
-		MessageBox::Show(exs->Message);
-	}*/
+	
 }
 
-void ClienteDAO::operator*=(Cliente obj)
+void ClienteDAO::operator*=(Cliente obj)//actualizar
 {
 	try {
 		SqlConnection ^cn = Conexion::getConnection();
@@ -153,7 +152,7 @@ void ClienteDAO::operator*=(Cliente obj)
 	}
 }
 
-void ClienteDAO::operator-=(Cliente obj)
+void ClienteDAO::operator-=(Cliente obj)//eliminar
 {
 	try {
 		SqlConnection ^cn = Conexion::getConnection();

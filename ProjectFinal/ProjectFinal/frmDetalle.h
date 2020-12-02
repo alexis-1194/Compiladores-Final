@@ -199,7 +199,6 @@ namespace ProjectFinal {
 	private: static int xmove = 0;
 	private: static int ymove = 0;
 
-
 	private: System::Void frmDetalle_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		if (e->Button != System::Windows::Forms::MouseButtons::Left)
 		{
